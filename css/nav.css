@@ -1,0 +1,30 @@
+#main-nav {
+	position: -webkit-sticky; /* For Safari */
+	position: sticky;
+	top: 0;
+	background-color: rgba(238, 238, 238, 0.9); /* #EEEEEE with 90% opacity */
+	z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+#main-nav > ul{
+	display: flex;
+	justify-content: center;
+	margin: 0px;
+}
+
+#main-nav > ul > li{
+	text-decoration: none;
+	list-style-type: none;
+	margin: 20px 5%;
+}
+
+#main-nav a {
+	text-decoration: none;
+	color: black;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	text-transform: uppercase;
+}
+
+#main-nav a:hover {
+	font-weight: bold;
+}

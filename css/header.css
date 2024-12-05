@@ -1,0 +1,9 @@
+#header {
+	background-color: rgba(238, 238, 238, 0.9);
+	text-align: center;
+	margin: 0px;
+}
+
+#header > h1{
+	margin: 0px;
+}

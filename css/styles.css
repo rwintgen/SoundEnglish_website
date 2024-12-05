@@ -1,0 +1,20 @@
+.content-block > h2 {
+	color: #31928F;
+}
+
+.cta-button {
+	height: 40px;
+	background-color: #DBAA6F;
+	color: black;
+	border-radius: 20px;
+	border: none;
+	font-size: large;
+	font-weight: bold;
+	padding: 0 20px;
+}
+
+.cta-button:hover {
+	background-color: black;
+	color: white;
+	cursor: pointer
+}
