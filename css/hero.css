@@ -1,40 +1,41 @@
 .heroSection {
 	display: flex;
-	min-height: 60vh;
+	min-height: 70vh;
+	width: 100%;
 }
 
-.heroSection > .heroPicture {
+.heroSection > #heroPicture {
 	padding-bottom: 28px;
 	min-height: 50vh;
 	min-width: 50%;
 	z-index: 2;
 }
 
-.heroSection > .heroPicture > img {
+.heroSection > #heroPicture > img {
 	border-bottom-right-radius: 20px;
     width: 100%;
     height: 100%;
 	object-fit: cover;
 }
 
-.heroSection > .heroText {
+.heroSection > #heroText {
 	background-color: #31928F;
 	border-bottom-left-radius: 20px;
 	margin-left: -10vw;
-	padding-left: 16vw;
-	padding-right: 10%;
+	padding-left: 12vw;
+	padding-right: 10vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
 }
 
-.heroSection > .heroText > h2 {
-	font-size: 36px;
+.heroSection > #heroText > h2 {
+	font-size: xxx-large;
 	margin: 20px 0;
 }
 
-.heroSection > .heroText p {
+.heroSection > #heroText p {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: large;
 }

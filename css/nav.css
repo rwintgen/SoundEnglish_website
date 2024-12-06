@@ -6,21 +6,33 @@
 	z-index: 1000;
 }
 
-#main-nav > ul{
+#main-nav > ul {
 	display: flex;
 	justify-content: center;
 	margin: 0px;
 }
 
-#main-nav > ul > li{
+#main-nav > ul > li {
 	text-decoration: none;
 	list-style-type: none;
-	margin: 20px 5%;
+	transition: background-color 0.1s ease, color 0.3s ease;
 }
 
-#main-nav a {
+#main-nav > ul > li:hover{
+	background-color: #DBAA6F;
+	cursor: pointer;
+}
+
+#main-nav > ul > li:hover > a{
+	color: white;
+}
+
+#main-nav ul li a {
+	display: block;
+	padding: 20px 4vw;
 	text-decoration: none;
 	color: black;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	text-transform: uppercase;
+	transition: color 0.1s ease;
 }

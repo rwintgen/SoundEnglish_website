@@ -6,6 +6,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 }
 
 body p {
@@ -24,6 +25,7 @@ content {
 	color: #31928F;
 	font-size: 36px;
 	text-align: center;
+	margin: 28px 0 16px 0;
 }
 
 .advert {
