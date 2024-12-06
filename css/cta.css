@@ -1,0 +1,17 @@
+.ctaButton {
+	height: 40px;
+	background-color: #DBAA6F;
+	color: black;
+	border-radius: 20px;
+	border: none;
+	font-size: large;
+	font-weight: bold;
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.ctaButton:hover {
+	background-color: black;
+	color: white;
+	cursor: pointer
+}

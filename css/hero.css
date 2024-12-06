@@ -4,7 +4,7 @@
 }
 
 .heroSection > .heroPicture {
-	padding-bottom: 20px;
+	padding-bottom: 28px;
 	min-height: 50vh;
 	min-width: 50%;
 	z-index: 2;
@@ -20,8 +20,8 @@
 .heroSection > .heroText {
 	background-color: #31928F;
 	border-bottom-left-radius: 20px;
-	margin-left: -10vh;
-	padding-left: 16vh;
+	margin-left: -10vw;
+	padding-left: 16vw;
 	padding-right: 10%;
 	display: flex;
 	flex-direction: column;
@@ -31,4 +31,17 @@
 
 .heroSection > .heroText > h2 {
 	font-size: 36px;
+	margin: 20px 0;
+}
+
+.heroSection > .heroText p {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: large;
+}
+
+.titleHighlight {
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: smaller;
 }
