@@ -1,0 +1,34 @@
+.heroSection {
+	display: flex;
+	min-height: 60vh;
+}
+
+.heroSection > .heroPicture {
+	padding-bottom: 20px;
+	min-height: 50vh;
+	min-width: 50%;
+	z-index: 2;
+}
+
+.heroSection > .heroPicture > img {
+	border-bottom-right-radius: 20px;
+    width: 100%;
+    height: 100%;
+	object-fit: cover;
+}
+
+.heroSection > .heroText {
+	background-color: #31928F;
+	border-bottom-left-radius: 20px;
+	margin-left: -10vh;
+	padding-left: 16vh;
+	padding-right: 10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.heroSection > .heroText > h2 {
+	font-size: 36px;
+}
