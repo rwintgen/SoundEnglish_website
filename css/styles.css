@@ -9,6 +9,12 @@ body {
 	width: 100%;
 }
 
+body h2 {
+	color: #31928F;
+	font-size: xx-large;
+	text-align: center;
+}
+
 body p {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

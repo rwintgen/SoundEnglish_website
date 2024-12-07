@@ -1,9 +1,3 @@
-.mission > h2 {
-	color: #31928F;
-	font-size: xx-large;
-	text-align: center;
-}
-
 .mission {
 	display: flex;
     flex-direction: column;

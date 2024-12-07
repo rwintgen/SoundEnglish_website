@@ -1,10 +1,35 @@
 .whoAmI {
-	/* min-width: 600px; */
 	display: flex;
-	
+	align-items: center;
+}
+
+.whoAmI > img {
+    object-fit: fill;
+	border-radius: 20px;
+	width: 30%;
+	height: 100%;
 }
 
 .whoAmI > #whoAmIText {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding-left: 4vw;
+}
+
+.whoAmI > #whoAmIText > h2 {
+	text-align: start;
+}
+
+.whoAmI > #whoAmIText > .ctaButton {
+	background-color: #31928F;
+	color: white;
+	min-width: fit-content;
+	width: 40%;
+}
+
+.whoAmI > #whoAmIText > .ctaButton:hover {
+	background-color: black;
+	color: white;
 }
