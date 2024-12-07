@@ -1,13 +1,16 @@
 .whoAmI {
 	display: flex;
-	align-items: center;
+	width: 60%;
+	min-width: 600px;
 }
 
 .whoAmI > img {
-    object-fit: fill;
+	max-width: 30%;
 	border-radius: 20px;
-	width: 30%;
-	height: 100%;
+    object-fit: cover;
+	min-width: 250px;
+	height: auto;
+	margin: 48px 0;
 }
 
 .whoAmI > #whoAmIText {
@@ -26,7 +29,6 @@
 	background-color: #31928F;
 	color: white;
 	min-width: fit-content;
-	width: 30%;
 }
 
 .whoAmI > #whoAmIText > .ctaButton:hover {
