@@ -1,0 +1,50 @@
+.reviews {
+	width: 70%;
+	min-width: 600px;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.reviews > div {
+	display: flex; 
+	flex-basis: calc(50% - 60px);  
+	justify-content: center;
+	flex-direction: column;
+}
+
+.reviews > div > div {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+  
+.reviews .box {
+	margin: 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column-reverse;
+	background-color: lightgrey;
+	align-items: flex-start;
+	border-radius: 20px;
+	transition: background-color 0.1s ease;
+}
+
+.reviews .box > .profile > img{
+	border-radius: 50%;
+	width: 75px;
+	height: 75px;
+	object-fit: cover;
+	filter: grayscale(100%);
+	transition: filter 0.3s ease;
+}
+
+.reviews .box:hover {
+	background-color: #DBAA6F;
+	align-items: flex-start;
+}
+
+.reviews .box:hover > .profile > img {
+    filter: grayscale(0%);
+}

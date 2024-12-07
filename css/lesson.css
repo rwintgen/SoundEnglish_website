@@ -1,0 +1,30 @@
+.freeLessonHighlight {
+	text-transform: uppercase;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-style: italic;
+}
+
+#freeLessonContent {
+	display: flex;
+	flex-direction: row;
+}
+
+#freeLessonContent > img{
+	border-radius: 20px;
+	object-fit: cover;
+	min-width: 250px;
+	height: auto;
+}
+
+#freeLessonContent > #freeLessonText {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 0 4vw;
+}
+
+#freeLessonContent > #freeLessonText > h3 {
+	padding: 0;
+	margin: 0;
+}

@@ -1,5 +1,6 @@
 .ctaButton {
 	height: 40px;
+	min-width: fit-content;
 	background-color: #DBAA6F;
 	color: black;
 	border-radius: 20px;
