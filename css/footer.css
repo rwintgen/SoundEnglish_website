@@ -25,4 +25,5 @@ footer #footer-nav > a{
 
 footer #footer-nav > a:hover{
 	cursor: pointer;
+	text-decoration: underline;
 }	

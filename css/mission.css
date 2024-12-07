@@ -1,0 +1,17 @@
+.mission > h2 {
+	color: #31928F;
+	font-size: xx-large;
+	text-align: center;
+}
+
+.mission {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width: 66%;
+}
+
+.mission > p {
+	text-align: center;
+}

@@ -21,22 +21,7 @@ content {
 	align-items: center;
 }
 
-.advert > h2 {
-	color: #31928F;
-	font-size: 36px;
-	text-align: center;
-	margin: 28px 0 16px 0;
+.contentBlock {
+	max-width: 80%;
+	margin: 36px 0;
 }
-
-.advert {
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-	width: 66%;
-}
-
-.advert > p {
-	text-align: center;
-}
-

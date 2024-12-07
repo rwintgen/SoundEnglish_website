@@ -1,0 +1,10 @@
+.whoAmI {
+	/* min-width: 600px; */
+	display: flex;
+	
+}
+
+.whoAmI > #whoAmIText {
+	display: flex;
+	flex-direction: column;
+}
