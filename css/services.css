@@ -1,0 +1,69 @@
+.servicesGrid {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.service {
+	flex: 0 1 25%;
+	min-width: 320px;
+	max-width: 600px;
+	max-height: fit-content;
+	padding: 12px;
+	border-radius: 20px;
+	margin: 16px;
+    background-color: rgba(238, 238, 238);
+    position: relative;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.service:hover {
+	background-color: #DBAA6F;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 600px;
+	transform: scale(1.05);
+	height: auto;
+}
+
+.service > h4 {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	text-align: center;
+}
+
+.service:hover > h4 {
+	display: none;
+}
+
+.service:hover .serviceContent {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 320px;
+	max-width: 600px;
+}
+
+.serviceContent {
+	display: none;
+}
+
+.serviceContent > img {
+	border-radius: 16px;
+	width: 100%;
+	height: auto;
+}
+
+.serviceContent > h3 {
+	text-align: center;
+	padding: 0;
+}
+
+#servicesHighlight {
+	text-transform: uppercase;
+	font-size: smaller;
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-style: italic;
+}
