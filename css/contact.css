@@ -17,6 +17,10 @@
     margin-bottom: 10px;
 }
 
+#contactForm label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 #contactForm input,
 #contactForm textarea {
     padding: 10px;
