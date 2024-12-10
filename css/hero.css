@@ -1,6 +1,7 @@
 .heroSection {
 	display: flex;
 	min-height: 70vh;
+	height: 80%;
 	width: 100%;
 }
 
@@ -42,7 +43,7 @@
 }
 
 .titleHighlight {
-	color: white;
+	color: whitesmoke;
 	text-transform: uppercase;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: smaller;

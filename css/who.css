@@ -25,13 +25,13 @@
 	text-align: start;
 }
 
-.whoAmI > #whoAmIText > .ctaButton {
+.whoAmI > #whoAmIText .ctaButton {
 	background-color: #31928F;
-	color: white;
+	color: whitesmoke;
 	min-width: fit-content;
 }
 
-.whoAmI > #whoAmIText > .ctaButton:hover {
+.whoAmI > #whoAmIText .ctaButton:hover {
 	background-color: black;
-	color: white;
+	color: whitesmoke;
 }
