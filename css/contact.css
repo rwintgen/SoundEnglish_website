@@ -1,0 +1,25 @@
+.contact > #contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#contactForm #name,
+#contactForm #email {
+	min-width: 240px;
+}
+
+#contactForm textarea {
+    min-width: 240px;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+#contactForm input,
+#contactForm textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

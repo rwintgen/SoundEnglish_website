@@ -5,7 +5,7 @@
 #freeLessonContent > img{
 	width: 50%;
 	max-width: 600px;
-	border-radius: 20px;
+	border-radius: 32px;
 	object-fit: cover;
 	min-width: 250px;
 	height: auto;

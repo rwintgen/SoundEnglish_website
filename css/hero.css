@@ -13,7 +13,7 @@
 }
 
 .heroSection > #heroPicture > img {
-	border-bottom-right-radius: 20px;
+	border-bottom-right-radius: 32px;
     width: 100%;
     height: 100%;
 	object-fit: cover;
@@ -21,7 +21,7 @@
 
 .heroSection > #heroText {
 	background-color: #31928F;
-	border-bottom-left-radius: 20px;
+	border-bottom-left-radius: 32px;
 	margin-left: -10vw;
 	padding-left: 14vw;
 	padding-right: 10vw;

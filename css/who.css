@@ -6,7 +6,7 @@
 
 .whoAmI > img {
 	max-width: 30%;
-	border-radius: 20px;
+	border-radius: 32px;
     object-fit: cover;
 	min-width: 250px;
 	height: auto;
