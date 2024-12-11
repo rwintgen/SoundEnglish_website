@@ -4,7 +4,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
-  
+
 .service {
 	flex: 0 1 25%;
 	min-width: 320px;
@@ -19,7 +19,7 @@
 	overflow: hidden;
 	cursor: pointer;
 }
-  
+
 .service:hover {
 	background-color: #DBAA6F;
 }
@@ -28,16 +28,16 @@
 	background-color: #DBAA6F;
 	transform: scale(1.05);
 }
-  
+
 .service > h4 {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	text-align: center;
 }
-  
+
 .service.active > h4 {
 	display: none;
 }
-  
+
 .serviceContent {
 	display: none;
 }
@@ -55,7 +55,7 @@
 	width: 100%;
 	height: auto;
 }
-  
+
 .serviceContent > h3 {
 	text-align: center;
 	padding: 0;

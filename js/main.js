@@ -19,4 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	const scriptLesson = document.createElement('script');
     scriptLesson.src = 'js/lesson.js';
     document.head.appendChild(scriptLesson);
+
+	const scriptFAQ = document.createElement('script');
+    scriptFAQ.src = 'js/faq.js';
+    document.head.appendChild(scriptFAQ);
 });
