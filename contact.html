@@ -41,7 +41,9 @@
 	<content>
 		<div class="contentBlock contact">
 			<h2>Contact</h2>
-			<form id="contactForm">
+			<form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
+			
 				<label for="name">Name:</label>
 				<input type="text" id="name" name="name" required>
 				
@@ -51,6 +53,9 @@
 				<label for="message">Message:</label>
 				<textarea id="message" name="message" required></textarea>
 				
+				<!-- Honeypot Spam Protection -->
+				<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+						
 				<button type="submit" class="ctaButton">Send</button>
 			</form>
 		</div>
