@@ -8,7 +8,7 @@
 
 #contactForm #name,
 #contactForm #email {
-	min-width: 240px;
+    min-width: 240px;
 }
 
 #contactForm textarea {
