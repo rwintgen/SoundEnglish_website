@@ -30,7 +30,6 @@
 .methodHero > #methodHeroText > h2,
 .methodHero > #methodHeroText > p {
 	padding: 0 24px;
-	width: 70%;
 	min-width: 400px;
 }
 
