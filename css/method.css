@@ -19,6 +19,7 @@
 
 .methodHero > img {
 	width: 40%;
+	max-width: 600px;
 	border-radius: 32px;
 }
 
@@ -70,7 +71,7 @@
 #line1 {
 	object-fit: fill;
 	height: 12vw;
-	width: 70%;
+	width: 50%;
 	margin-top: -8%;
 	margin-left: -300px;
 }
@@ -78,7 +79,7 @@
 #line2 {
 	object-fit: fill;
 	height: 12vw;
-	width: 30%;
+	width: 25%;
 	margin-top: 4%;
 	margin-right: 24px
 }
@@ -92,5 +93,25 @@
 }
 
 #block3 {
-	margin-top: 4%;
+	margin: 4% 0;
+}
+
+#pairOfLines {
+	display: flex;
+    flex-direction: column;
+	justify-content: space-around;
+}
+
+#line4,
+#line5 {
+	object-fit: fill;
+	height: 12vw;
+	width: 90%;
+	margin: 4% 0;
+	margin-right: 24px
+}
+
+#block5 {
+	margin-top: 2%;
+	margin-right: 24%;
 }
