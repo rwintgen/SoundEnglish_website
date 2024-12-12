@@ -1,25 +1,52 @@
-.method {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-.method > img {
-	width: 40%;
-	border-radius: 32px;
-}
-
-.method > #methodHeroText > h2,
-.method > #methodHeroText > p {
-	padding: 0 24px;
-}
-
 .method h1 {
-	font-size: xx-large;
+	font-size: 128px;
 	color: #31928F;
+	margin: 0;
 }
 
 .method h2 {
 	color: black;
 	text-align: left;
+	margin: 0;
+}
+
+.methodHero {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.methodHero > img {
+	width: 40%;
+	border-radius: 32px;
+}
+
+.methodHero > #methodHeroText > h2,
+.methodHero > #methodHeroText > p {
+	padding: 0 24px;
+	width: 70%;
+	min-width: 400px;
+}
+
+.methodContent {
+	background-color: red;
+}
+
+.methodBlock {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	background-color: blue;
+	width: 100%;
+	min-width: 300px;
+	padding: 24px;
+	height: auto;
+}
+
+.methodBlock > img {
+	object-fit: fill;
+	height: 200px;
+	width: 60%;
 }

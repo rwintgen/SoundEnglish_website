@@ -9,10 +9,12 @@ function handleFaqClick(event) {
     }
 }
 
-function deactivateAllFaqs() {
-    faqItems.forEach(item => item.classList.remove('active'));
-}
-
 faqItems.forEach(item => {
     item.addEventListener('click', handleFaqClick);
+    const answer = item.querySelector('.answer');
+    if (answer) {
+        answer.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    }
 });

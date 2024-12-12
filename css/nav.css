@@ -1,4 +1,4 @@
-#main-nav {
+#navBar {
 	position: sticky;
 	width: 100%;
 	top: 0;
@@ -8,13 +8,13 @@
 	-webkit-backdrop-filter: blur(2px);
 }
 
-#main-nav > ul {
+#navBar > ul {
 	display: flex;
 	justify-content: center;
 	margin: 0px;
 }
 
-#main-nav > ul > li {
+#navBar > ul > li {
 	text-decoration: none;
 	list-style-type: none;
 	margin: 0 4px;
@@ -22,16 +22,16 @@
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#main-nav > ul > li:hover{
+#navBar > ul > li:hover{
 	background-color: #DBAA6F;
 	cursor: pointer;
 }
 
-#main-nav > ul > li:hover > a{
+#navBar > ul > li:hover > a{
 	color: whitesmoke;
 }
 
-#main-nav ul li a {
+#navBar ul li a {
 	display: block;
 	padding: 20px clamp(36px, 4vw, 200px);;
 	text-decoration: none;

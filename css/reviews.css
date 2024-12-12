@@ -30,7 +30,7 @@
 	background-color: lightgrey;
 	align-items: flex-start;
 	border-radius: 32px;
-	transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .reviews .box > .profile > img{
@@ -45,6 +45,7 @@
 .reviews .box:hover {
 	background-color: #DBAA6F;
 	align-items: flex-start;
+	transform: scale(1.05);
 }
 
 .reviews .box:hover > .profile > img {
