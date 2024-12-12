@@ -1,0 +1,25 @@
+.method {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.method > img {
+	width: 40%;
+	border-radius: 32px;
+}
+
+.method > #methodHeroText > h2,
+.method > #methodHeroText > p {
+	padding: 0 24px;
+}
+
+.method h1 {
+	font-size: xx-large;
+	color: #31928F;
+}
+
+.method h2 {
+	color: black;
+	text-align: left;
+}

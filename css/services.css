@@ -1,3 +1,9 @@
+.services > p {
+	text-align: center;
+	width: 50%;
+	margin: 16px auto;
+}
+
 .servicesGrid {
 	display: flex;
 	flex-direction: row;
