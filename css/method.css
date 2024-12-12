@@ -14,12 +14,16 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom: 24px;
+	margin-bottom: 12%;
 }
 
 .methodHero > img {
 	width: 40%;
 	border-radius: 32px;
+}
+
+.methodHero > #methodHeroText {
+	margin-bottom: 5%;
 }
 
 .methodHero > #methodHeroText > h2,
@@ -29,24 +33,64 @@
 	min-width: 400px;
 }
 
-.methodContent {
-	background-color: red;
-}
-
 .methodBlock {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	background-color: blue;
+	justify-content: center;
+	align-items: top;
 	width: 100%;
 	min-width: 300px;
 	padding: 24px;
 	height: auto;
+	margin-top: -12%;
 }
 
-.methodBlock > img {
+.methodText {
+	width: 25%;
+	min-width: 400px;
+}
+
+.methodBlockRev {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	align-items: top;
+	width: 100%;
+	min-width: 300px;
+	padding: 24px;
+	height: auto;
+	margin: -6% 0;
+}
+
+.methodTextRev {
+	width: 25%;
+	min-width: 400px;
+}
+
+#line1 {
 	object-fit: fill;
-	height: 200px;
-	width: 60%;
+	height: 12vw;
+	width: 70%;
+	margin-top: -8%;
+	margin-left: -300px;
+}
+
+#line2 {
+	object-fit: fill;
+	height: 12vw;
+	width: 30%;
+	margin-top: 4%;
+	margin-right: 24px
+}
+
+#line3 {
+	object-fit: fill;
+	height: 12vw;
+	width: 30%;
+	margin-top: 8%;
+	margin-left: 24px;
+}
+
+#block3 {
+	margin-top: 4%;
 }
