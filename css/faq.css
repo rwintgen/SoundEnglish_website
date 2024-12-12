@@ -1,5 +1,6 @@
 .faqSection {
     padding: 20px;
+    max-width: 600px;
 }
 
 .faqItem {
@@ -25,6 +26,9 @@
 }
 
 .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
@@ -34,7 +38,22 @@
     margin-top: 5px;
 }
 
+.answer > p {
+    margin: 0 8px;
+}
+
 .faqItem.active .answer {
-    max-height: 200px;
+    max-height: fit-content;
     padding: 10px;
+}
+
+.answer #specialButton {
+	background-color: #31928F;
+	color: whitesmoke;
+	min-width: fit-content;
+}
+
+.answer #specialButton:hover {
+	background-color: black;
+	color: whitesmoke;
 }
