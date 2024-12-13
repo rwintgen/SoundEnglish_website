@@ -5,7 +5,6 @@
 }
 
 .method h2 {
-	color: black;
 	text-align: left;
 	margin: 0;
 }
@@ -83,9 +82,14 @@
 	margin-right: 24px
 }
 
-#line3 {
+#line6 {
 	object-fit: fill;
 	height: 12vw;
+}
+
+#line3 {
+	object-fit: fill;
+	height: 8vw;
 	width: 30%;
 	margin-top: 8%;
 	margin-left: 24px;
@@ -112,5 +116,6 @@
 
 #block5 {
 	margin-top: 2%;
+	margin-bottom: 4%;
 	margin-right: 24%;
 }
