@@ -37,7 +37,7 @@
 
 #navBar ul li a {
 	display: block;
-	padding: 20px clamp(36px, 4vw, 200px);;
+	padding: 20px clamp(24px, 3vw, 200px);;
 	text-decoration: none;
 	color: black;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -47,7 +47,7 @@
 
 #languageSwitcher {
     position: absolute;
-    right: 200px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     padding: 0px;

@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+	const scriptTranslations = document.createElement('script');
+    scriptTranslations.src = 'js/translations.js';
+    document.head.appendChild(scriptTranslations);
+
 	const scriptHero = document.createElement('script');
 	scriptHero.src = 'js/hero.js';
 	document.head.appendChild(scriptHero);
