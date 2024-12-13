@@ -3,9 +3,13 @@
 	width: 100%;
 	top: 0;
 	z-index: 1000;
-	background-color: rgba(238, 238, 238, 0.9);
-	backdrop-filter: blur(2px);
-	-webkit-backdrop-filter: blur(2px);
+	background-color: rgba(238, 238, 238, 0.80);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 8px 0;
 }
 
 #navBar > ul {
@@ -39,4 +43,16 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	text-transform: uppercase;
 	transition: color 0.3s ease;
+}
+
+#languageSwitcher {
+    position: absolute;
+    right: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
