@@ -73,7 +73,10 @@
 	"faq_question_4": "How can I book a free lesson?",
 	"faq_answer_4": "If you're considering taking classes with me but aren't sure yet, I offer a free discovery lesson to assess your level, needs, and objectives.<br><br>Still hesitant? Use this session to ask questions, share your expectations, and see if my teaching style suits you. There’s no obligation—just an opportunity to explore how we can work together. Reach out today to schedule your free lesson!",
 	"faq_question_5": "Who will be my English coach?",
-	"faq_answer_5": "Me, Joanna Slupek, of course! SoundEnglish is company—meaning I will be you coach as well as your single point of contact for any question or doubt you might have!"
+	"faq_answer_5": "Me, Joanna Slupek, of course! SoundEnglish is company—meaning I will be you coach as well as your single point of contact for any question or doubt you might have!",
 
-	
+	"contact_name": "Name:",
+	"contact_email": "Email:",
+	"contact_message": "Message:",
+	"contact_send": "Send"
 }

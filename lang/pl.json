@@ -73,5 +73,10 @@
 	"faq_question_4": "changeme",
 	"faq_answer_4": "changeme",
 	"faq_question_5": "changeme",
-	"faq_answer_5": "changeme"
+	"faq_answer_5": "changeme",
+
+	"contact_name": "Imię:",
+	"contact_email": "E-mail:",
+	"contact_message": "Wiadomość:",
+	"contact_send": "Wyślij"
 }
