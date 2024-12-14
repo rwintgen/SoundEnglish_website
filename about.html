@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="css/header.css">
 	<link rel="stylesheet" href="css/footer.css">
 	<link rel="stylesheet" href="css/faq.css">
+	<link rel="stylesheet" href="css/about.css">
 	<script src="js/main.js"></script>
 </head>
 <body>
@@ -36,9 +37,21 @@
 		</select>
 	</nav>
 	<content>
-		<p>
-			about me
-		</p>
+		<div class="contentBlock aboutHero">
+			<img src="https://placehold.co/1800x1000" alt="CHANGEME">
+			<h2 data-translate="about_hero_title"></h2>
+			<p data-translate="about_hero_text"></p>
+		</div>
+		<div class="contentBlock aboutMethod">
+			<h2 data-translate="about_method_title"></h2>
+			<p data-translate="about_method_text"></p>
+			<button class="ctaButton" id="ctaMethod" data-translate="learn_more"></button>
+		</div>
+		<div class="contentBlock aboutContact">
+			<h2 data-translate="about_contact_title"></h2>
+			<p data-translate="about_contact_text"></p>
+			<button class="ctaButton" data-translate="get_free_lesson"></button>
+		</div>
 		<div class="contentBlock faqSection">
 			<h2 data-translate="faq_title"></h2>
 			<div class="faqItem">

@@ -1,0 +1,37 @@
+.aboutMethod,
+.aboutContact,
+.aboutHero {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 34px 0;
+	width: 60%;
+	min-width: 600px;
+}
+
+.aboutHero > img {
+	object-fit: fill;
+	width: 100%;
+	border-radius: 32px;
+}
+
+.aboutMethod > p,
+.aboutContact > p,
+.aboutHero > p {
+	width: 80%;
+	text-align: center;
+}
+
+.aboutMethod #ctaMethod,
+.aboutMethod #ctaMethod {
+	background-color: #31928F;
+	color: whitesmoke;
+	min-width: fit-content;
+}
+
+.aboutMethod #ctaMethod:hover,
+.aboutMethod #ctaMethod:hover {
+	background-color: black;
+	color: whitesmoke;
+}
