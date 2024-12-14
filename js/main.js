@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     scriptLesson.src = 'js/lesson.js';
     document.head.appendChild(scriptLesson);
 
+	const scriptAbout = document.createElement('script');
+    scriptAbout.src = 'js/about.js';
+    document.head.appendChild(scriptAbout);
+
 	const scriptFAQ = document.createElement('script');
     scriptFAQ.src = 'js/faq.js';
     document.head.appendChild(scriptFAQ);

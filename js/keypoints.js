@@ -3,6 +3,6 @@ const keypointsButton = document.querySelector('.contentBlock.keyPoints .ctaButt
 if (keypointsButton) {
 	keypointsButton.addEventListener('click', function(event) {
 		event.stopPropagation();
-		window.open('contact.html', '_blank'); // Open contact.html in a new tab
+		window.open('contact.html', '_blank');
 	});
 }
