@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     scriptTranslations.src = 'js/translations.js';
     document.head.appendChild(scriptTranslations);
 
+	const scriptHamburger = document.createElement('script');
+    scriptHamburger.src = 'js/hamburger.js';
+    document.head.appendChild(scriptHamburger);
+
 	const scriptHero = document.createElement('script');
 	scriptHero.src = 'js/hero.js';
 	document.head.appendChild(scriptHero);
