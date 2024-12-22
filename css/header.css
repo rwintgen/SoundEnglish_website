@@ -1,7 +1,43 @@
 #header {
-	background-color: rgba(238, 238, 238, 0.9);
-	text-align: center;
-	margin: 0px;
-	width: 100%;
-	padding-top: 12px;
+    background-color: rgba(238, 238, 238, 0.9);
+    text-align: center;
+    margin: 0px;
+    width: 100%;
+    padding-top: 12px;
+}
+
+#mobileLogo {
+    display: none;
+}
+
+#hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+	#header {
+		position: sticky;
+		top: 0;
+        z-index: 1000;
+		background-color: rgba(238, 238, 238, 0.80);
+		backdrop-filter: blur(24px);
+		-webkit-backdrop-filter: blur(24px);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+    #desktopLogo {
+        display: none;
+    }
+
+    #mobileLogo {
+        display: block;
+		padding: 12px 20px;
+    }
+
+    #hamburger {
+        display: block;
+        padding: 12px 20px;
+    }
 }

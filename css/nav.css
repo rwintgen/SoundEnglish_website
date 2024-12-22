@@ -12,13 +12,13 @@
 	padding: 8px 0;
 }
 
-#navBar > ul {
+#navBar > #navLinks {
 	display: flex;
 	justify-content: center;
 	margin: 0px;
 }
 
-#navBar > ul > li {
+#navBar > #navLinks > li {
 	text-decoration: none;
 	list-style-type: none;
 	margin: 0 4px;
@@ -26,16 +26,16 @@
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#navBar > ul > li:hover{
+#navBar > #navLinks > li:hover{
 	background-color: #DBAA6F;
 	cursor: pointer;
 }
 
-#navBar > ul > li:hover > a{
+#navBar > #navLinks > li:hover > a{
 	color: whitesmoke;
 }
 
-#navBar ul li a {
+#navBar #navLinks li a {
 	display: block;
 	padding: 20px clamp(24px, 3vw, 200px);;
 	text-decoration: none;
@@ -55,4 +55,10 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+	#navBar {
+		display: none; 
+	}
 }
