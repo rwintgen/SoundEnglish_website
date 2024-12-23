@@ -50,3 +50,33 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: smaller;
 }
+
+@media screen and (max-width: 480px) {
+	.heroSection {
+		display: block;
+		min-height: 70vh;
+		height: 80%;
+		width: 100%;
+	}
+	
+	.heroSection > #heroPicture {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+	}
+	
+	.heroSection > #heroPicture > img {
+		border-radius: 0%;
+	}
+
+	.heroSection > #heroText {
+		border-radius: 0%;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		display: block;
+		padding-bottom: 36px;
+	}
+}

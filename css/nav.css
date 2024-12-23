@@ -64,7 +64,6 @@
         top: 92px;
         right: 0;
         width: 60%;
-        height: calc(100% - 92px);
         z-index: 1001;
         background-color: rgba(49, 146, 143, 0.80);
         backdrop-filter: blur(24px);
@@ -75,12 +74,10 @@
         justify-content: space-between;
         transition: transform 0.3s ease, opacity 0.3s ease;
         transform: translateX(100%);
-        opacity: 0;
     }
 
     #navBar.show {
         transform: translateX(0);
-        opacity: 1; 
     }
 
     #navBar > #navLinks {
@@ -97,6 +94,10 @@
         margin: 0;
         border-radius: 0;
         font-size: xxx-large;
+    }
+
+	#navBar > #navLinks > li:active > a {
+        font-weight: bold;
     }
 
     #languageSwitcher {
