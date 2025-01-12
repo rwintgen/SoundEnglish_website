@@ -47,3 +47,12 @@ content {
 	max-width: 80%;
 	margin: 36px 0;
 }
+
+@media screen and (max-width: 480px) {
+	body h2 {
+		color: #31928F;
+		font-size: xx-large;
+		text-align: center;
+		margin: 20px 0;
+	}
+}

@@ -63,7 +63,8 @@
         position: fixed;
         top: 92px;
         right: 0;
-        width: 60%;
+        width: 90%;
+        height: 80%;
         z-index: 1001;
         background-color: rgba(49, 146, 143, 0.80);
         backdrop-filter: blur(24px);

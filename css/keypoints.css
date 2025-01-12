@@ -33,6 +33,7 @@
 	justify-content: center;
 	padding: 16px 0;
 }
+
 .keyPointText > h3,
 .keyPointText > p {
 	padding: 0 20px;
@@ -42,4 +43,29 @@
 .keyPoints > .ctaButton {
 	margin-top: 28px;
 	min-width: fit-content;
+}
+
+@media screen and (max-width: 480px) {
+	.keyPoints .keyPoint {
+		display:flex;
+		flex-direction: column;
+	}
+
+	.keyPoints .keyPointRev {
+		display:flex;
+		flex-direction: column;
+	}
+
+	.keyPointPicture {
+		width: 100%;
+		display:flex;
+	}
+
+	.keyPointText {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px 0;
+	}
 }

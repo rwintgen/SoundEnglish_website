@@ -62,6 +62,7 @@
 	.heroSection > #heroPicture {
 		padding: 0;
 		margin: 0;
+		margin-bottom: -5px;
 		width: 100%;
 		min-width: 100%;
 		max-width: 100%;
@@ -75,8 +76,23 @@
 		border-radius: 0%;
 		margin: 0;
 		padding: 0;
+		padding: 24px 0;
 		width: 100%;
 		display: block;
-		padding-bottom: 36px;
+	}
+
+	.heroSection > #heroText > h1 {
+		font-size: xx-large;
+		padding: 0 20px;
+		margin: 0
+	}
+
+	.heroSection > #heroText > p {
+		padding: 0 20px;
+	}
+
+	.heroSection > #heroText > .ctaButton {
+		margin-left: 20px;
+		margin-top: 8px;
 	}
 }
