@@ -36,3 +36,28 @@
 	background-color: black;
 	color: whitesmoke;
 }
+
+@media screen and (max-width: 480px) {
+	.whoAmI {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+		min-width: 0;
+		max-width: none;
+		align-items: center;
+	}
+
+	.whoAmI > img {
+		width: 75%;
+		max-width: 100%;
+		border-radius: 32px;
+		object-fit: cover;
+		height: auto;
+		margin: 0;
+	}
+
+	.whoAmI > #whoAmIText {
+		align-items: center;
+		padding-left: 0;
+	}
+}

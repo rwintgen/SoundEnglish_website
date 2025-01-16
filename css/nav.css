@@ -64,7 +64,7 @@
         top: 92px;
         right: 0;
         width: 100%;
-        height: 75%;
+        height: calc(100vh - 92px);
         z-index: 1001;
         background-color: rgba(49, 146, 143, 0.80);
         backdrop-filter: blur(24px);

@@ -31,3 +31,20 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-style: italic;
 }
+
+@media screen and (max-width: 480px) {
+	#freeLessonContent {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#freeLessonContent > img{
+		width: 70%;
+	}
+
+	#freeLessonContent > #freeLessonText {
+		width: 100%;
+		margin-top: 24px;
+	}
+}
