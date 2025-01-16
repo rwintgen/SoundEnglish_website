@@ -49,6 +49,10 @@ content {
 }
 
 @media screen and (max-width: 480px) {
+	body {
+		min-width: 300px;
+	}
+	
 	body h2 {
 		color: #31928F;
 		font-size: xx-large;
