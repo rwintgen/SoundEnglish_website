@@ -52,7 +52,7 @@
     filter: grayscale(0%);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 845px) {
 	.reviews {
 		width: 100%;
 		min-width: 250px;

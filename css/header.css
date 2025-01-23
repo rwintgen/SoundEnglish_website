@@ -3,7 +3,7 @@
     text-align: center;
     margin: 0px;
     width: 100%;
-    padding-top: 12px;
+    /* padding-top: 12px; */
 }
 
 #mobileLogo {
@@ -14,7 +14,7 @@
     display: none;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 845px) {
 	#header {
 		position: sticky;
 		top: 0;
@@ -44,9 +44,9 @@
         height: 50px;
         width: auto;
         display: block;
-        padding: 12px 0;
+        padding: 12px;
         transition: transform 0.3s ease;
-        width: 15%;
+        cursor: pointer; 
     }
 
     #hamburger.rotate {

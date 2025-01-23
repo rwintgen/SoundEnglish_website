@@ -82,7 +82,7 @@
 	font-style: italic;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 845px) {
 	.services > p {
 		text-align: center;
 		width: 100%;

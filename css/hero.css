@@ -51,7 +51,7 @@
 	font-size: smaller;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 845px) {
 	.heroSection {
 		display: block;
 		min-height: 70vh;
