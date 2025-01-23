@@ -3,7 +3,7 @@
     text-align: center;
     margin: 0px;
     width: 100%;
-    /* padding-top: 12px; */
+    padding-top: 12px;
 }
 
 #mobileLogo {
@@ -28,6 +28,7 @@
         align-items: center;
         width: 100%;
         height: 92px;
+        padding-top: 0px;
 	}
 
     #desktopLogo {

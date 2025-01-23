@@ -129,3 +129,59 @@
 	height: 12vw;
 	margin-top: 1%;
 }
+
+@media screen and (max-width: 845px) {
+	.methodBlock img,
+	.methodBlockRev img {
+		display: none;
+	}
+
+	.methodBlock,
+	.methodBlockRev {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.methodHero {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.methodHero > img {
+		width: 100%;
+		max-width: 600px;
+		border-radius: 32px;
+	}
+
+	.methodHero > #methodHeroText {
+		margin-bottom: 5%;
+	}
+	
+	.methodHero > #methodHeroText > h2 {
+		padding: 0px;
+		padding-top: 24px;
+		min-width: 0px;
+	}
+
+	.methodHero > #methodHeroText > p {
+		padding: 0px;
+		min-width: 0px;
+	}
+
+	#block1,
+	#block2,
+	#block3,
+	#block4,
+	#block5 {
+		display: block;
+		margin: 0%;
+	}
+
+	.methodText {
+		width: 80%;
+		min-width: 0px;
+	}
+}
