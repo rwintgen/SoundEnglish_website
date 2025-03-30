@@ -44,7 +44,10 @@
 	}
 
 	#freeLessonContent > #freeLessonText {
-		width: 100%;
+		width: 80%;
 		margin-top: 24px;
+		display: flex;
+        flex-direction: column;
+        align-items: center;
 	}
 }
