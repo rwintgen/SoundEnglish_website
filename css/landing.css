@@ -41,7 +41,7 @@
 	width: 80%;
 }
 
-#contactForm {
+.contactForm {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -50,7 +50,7 @@
 	width: 100%;
 }
 
-#contactForm input {
+.contactForm input {
 	padding: 10px 12px;
 	font-size: 1rem;
 	border: 1px solid #ccc;
@@ -58,7 +58,7 @@
 	width: 30%;
 }
 
-#contactForm button.ctaButton {
+.contactForm button.ctaButton {
 	margin: 0px;
 }
 
@@ -67,4 +67,37 @@
 	font-size: smaller;
 	color: #666;
 	text-align: center;
+}
+
+@media screen and (max-width: 845px) {
+	#navBar,
+	#hamburger {
+		display: none;
+	}
+
+	#landingTitle > img {
+		object-fit: fill;
+		width: 100%;
+		border-radius: 32px;
+	}
+	
+	#landingTitle > h1, 
+	#landingTitle > p {
+		width: 100%;
+		text-align : center;
+	}
+
+	.contactForm {
+		flex-direction: column;
+		/* align-items: stretch; */
+		gap: 16px;
+	}
+
+	.contactForm input {
+		width: 100%
+	}
+
+	.landingContact p {
+		margin-top: 0px;
+	}
 }

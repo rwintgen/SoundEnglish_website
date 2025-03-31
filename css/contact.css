@@ -1,4 +1,4 @@
-.contact > #contactForm {
+.contact > .contactForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,24 +6,24 @@
     width: 100%;
 }
 
-#contactForm #name,
-#contactForm #email {
+.contactForm #name,
+.contactForm #email {
     min-width: 240px;
 }
 
-#contactForm textarea {
+.contactForm textarea {
     min-width: 240px;
     max-width: 500px;
     margin-bottom: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#contactForm label {
+.contactForm label {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#contactForm input,
-#contactForm textarea {
+.contactForm input,
+.contactForm textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;

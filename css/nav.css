@@ -98,7 +98,7 @@
     }
 
 	#navBar > #navLinks > li:active > a {
-        font-weight: bold;
+        background-color: white;
     }
 
     #languageSwitcher {
