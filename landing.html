@@ -1,52 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="about"></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FREE English lesson</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon_16x16.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon_32x32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon_48x48.png">
 	<link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon_64x64.png">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/cta.css">
-	<link rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="css/header.css">
 	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/keypoints.css">
 	<link rel="stylesheet" href="css/faq.css">
 	<link rel="stylesheet" href="css/about.css">
+	<link rel="stylesheet" href="css/landing.css">
 	<script src="js/main.js"></script>
 </head>
 <body>
 	<header id="header">
-		<a href="index.html">
+		<a href="index.html" target="_blank">
 			<img id="desktopLogo" src="assets/logo_svg/logo_full_color.svg" alt="soundenglish_logo_full_color">
 			<img id="mobileLogo" src="assets/logo_svg/logo_little_color.svg" alt="soundenglish_logo_mini_color">
 		</a>
 		<img id="hamburger" src="assets/illustrations/hamburger_icon.svg" alt="hamburger_menu_icon">
 	</header>
-	<nav id="navBar">
-		<ul id="navLinks">
-			<li><a href="index.html" data-translate="home"></a></li>
-			<li><a href="method.html" data-translate="method"></a></li>
-			<li><a href="about.html" data-translate="about"></a></li>
-			<li><a href="contact.html" data-translate="contact"></a></li>
-		</ul>
+	<content>
 		<select id="languageSwitcher">
 			<option value="en">English</option>
 			<option value="fr">Français</option>
 			<option value="pl">Polski</option>
 		</select>
-	</nav>
-	<content>
 		<!-- Add landing page content here -->
+
+		<div class="contentBlock" id="landingTitle">
+			<h1>Meet your new English coach</h1>
+			<p>
+				Ready to take your englidh to the next level? <br>
+				I've helped hundreds of adults boost their English over my 10+ years of teaching English.<br>
+				Are you ready to unlock the most fundamental skill to connect with people around the world?<br>
+				Take your english to the next level now!
+			</p>
+			<button class="ctaButton" id="landingMainCta1">Get a FREE discovery lesson</button>
+			<img src="https://placehold.co/1800x1000" alt="CHANGEME">
+		</div>
+		<div class="contentBlock landingContact" id="contactSection1">
+			<h2>Claim your free English lesson!</h2>
+			<form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
+				<label for="name" data-translate="contact_name"></label>
+				<input type="text" id="name" name="name" required>
+				<label for="email" data-translate="contact_email"></label>
+				<input type="email" id="email" name="email" required>
+				<button type="submit" class="ctaButton">Claim</button>
+			</form>
+			<p>Leave me your email address so we can schedule our first lesson together!</p>
+		</div>
+		<div class="contentBlock keyPoints">
+			<div class="keyPoint">
+				<div class="keyPointPicture">
+					<img src="assets/pictures/sample_keypoint_1.png" alt="CHANGEME">
+				</div>
+				<div class="keyPointText">
+					<h3 data-translate="keypoint_1_title"></h3>
+					<p data-translate="keypoint_1_text"></p>
+				</div>
+			</div>
+			<div class="keyPointRev">
+				<div class="keyPointPicture">
+					<img src="assets/pictures/sample_keypoint_2.png" alt="CHANGEME">
+				</div>
+				<div class="keyPointText">
+					<h3 data-translate="keypoint_2_title"></h3>
+					<p data-translate="keypoint_2_text"></p>
+				</div>
+			</div>
+			<div class="keyPoint">
+				<div class="keyPointPicture">
+					<img src="assets/pictures/sample_keypoint_3.png" alt="CHANGEME">
+				</div>
+				<div class="keyPointText">
+					<h3 data-translate="keypoint_3_title"></h3>
+					<p data-translate="keypoint_3_text"></p>
+				</div>
+			</div>
+			<div class="keyPointRev">
+				<div class="keyPointPicture">
+					<img src="assets/pictures/sample_keypoint_4.png" alt="CHANGEME">
+				</div>
+				<div class="keyPointText">
+					<h3 data-translate="keypoint_4_title"></h3>
+					<p data-translate="keypoint_4_text"></p>
+				</div>
+			</div>
+			<div class="keyPoint">
+				<div class="keyPointPicture">
+					<img src="assets/pictures/sample_keypoint_5.png" alt="CHANGEME">
+				</div>
+				<div class="keyPointText">
+					<h3 data-translate="keypoint_5_title"></h3>
+					<p data-translate="keypoint_5_text"></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="contentBlock landingContact">
+			<h2>Get your free lesson now!</h2>
+			<form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
+				<label for="name" data-translate="contact_name"></label>
+				<input type="text" id="name" name="name" required>
+				<label for="email" data-translate="contact_email"></label>
+				<input type="email" id="email" name="email" required>
+				<button type="submit" class="ctaButton">Send</button>
+			</form>
+			<p>Leave me your email address so we can schedule our first lesson together!</p>
+		</div>
+
+		<div class="contentBlock">
+			<h1>Title blablabla</h1>
+			<p>Some text about the methodology, Some text about the methodology, </p>
+			<button class="ctaButton" id="landingMainCta2">Get a FREE discovery lesson</button>
+
+		</div>
+
+		<!-- End of landing page content here -->
 		<div class="contentBlock faqSection">
 			<h2 data-translate="faq_title"></h2>
 			<div class="faqItem">
 				<button class="question" data-translate="faq_question_1"></button>
 				<div class="answer">
 					<p data-translate="faq_answer_1"></p>
-					<a href="contact.html">
+					<a href="contact.html" target="_blank">
 						<button class="ctaButton" data-translate="contact_me"></button>
 					</a>
 				</div>
@@ -55,7 +141,7 @@
 				<button class="question" data-translate="faq_question_2"></button>
 				<div class="answer">
 					<p data-translate="faq_answer_2"></p>
-					<a href="about.html">
+					<a href="about.html" target="_blank">
 						<button class="ctaButton" id="specialButton" data-translate="discover_method"></button>
 					</a>
 				</div>
@@ -76,12 +162,25 @@
 				<button class="question" data-translate="faq_question_5"></button>
 				<div class="answer">
 					<p data-translate="faq_answer_5"></p>
-					<a href="about.html">
+					<a href="about.html" target="_blank">
 						<button class="ctaButton" id="specialButton" data-translate="learn_more"></button>
 					</a>
 				</div>
 			</div>
 			<!-- Add more FAQ items here -->
+		</div>
+
+		<div class="contentBlock landingContact" id="contactSection2">
+			<h2>Get your free english lesson now!</h2>
+			<form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
+				<label for="name" data-translate="contact_name"></label>
+				<input type="text" id="name" name="name" required>
+				<label for="email" data-translate="contact_email"></label>
+				<input type="email" id="email" name="email" required>
+				<button type="submit" class="ctaButton">Send</button>
+			</form>
+			<p>Leave me your email address so we can schedule our first lesson together!</p>
 		</div>
 	</content>
 	<footer>
@@ -89,10 +188,10 @@
 			<img src="assets/logo_svg/logo_full_white.svg" alt="soundenglish_logo_full_white">
 		</div>
 		<nav id="footerNav">
-			<a href="index.html" data-translate="home"></a>
-			<a href="method.html" data-translate="method"></a>
-			<a href="about.html" data-translate="about"></a>
-			<a href="contact.html" data-translate="contact"></a>
+			<a href="index.html" target="_blank" data-translate="home"></a>
+			<a href="method.html" target="_blank" data-translate="method"></a>
+			<a href="about.html" target="_blank" data-translate="about"></a>
+			<a href="contact.html" target="_blank" data-translate="contact"></a>
 		</nav>
 	</footer>
 </body>
