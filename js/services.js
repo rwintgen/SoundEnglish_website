@@ -20,7 +20,11 @@ services.forEach(service => {
 	buttons.forEach(button => {
 		button.addEventListener('click', function(event) {
 			event.stopPropagation();
-			window.open('contact.html', '_blank');
+			if (this.id === 'packages_redirect_btn') {
+				window.location.href = 'packages.html';
+			} else {
+				window.open('contact.html', '_blank');
+			}
 		});
 	});
 });
