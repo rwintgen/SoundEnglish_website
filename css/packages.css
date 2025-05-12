@@ -1,0 +1,26 @@
+#packagesHeaders {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+#packagesHeaders h4 {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: normal;
+	cursor: pointer
+}
+
+#packagesHeaders h4.active {
+	color: #31928F;
+	font-size: larger;
+}
+
+.packageCard {
+    display: none;
+}
+
+.packageCard.active {
+    display: block;
+}

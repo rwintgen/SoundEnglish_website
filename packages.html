@@ -9,13 +9,20 @@
 	<link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon_48x48.png">
 	<link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon_64x64.png">
 	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/cta.css">
+	<link rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/mission.css">
 	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/hero.css">
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/cta.css">
 	<link rel="stylesheet" href="css/keypoints.css">
+	<link rel="stylesheet" href="css/who.css">
+	<link rel="stylesheet" href="css/reviews.css">
+	<link rel="stylesheet" href="css/lesson.css">
+	<link rel="stylesheet" href="css/services.css">
 	<link rel="stylesheet" href="css/faq.css">
-	<link rel="stylesheet" href="css/about.css">
-	<link rel="stylesheet" href="css/landing.css">
+	<link rel="stylesheet" href="css/packages.css">
 	<script src="js/main.js"></script>
 </head>
 <body>
@@ -25,9 +32,76 @@
 			<img id="mobileLogo" src="assets/logo_svg/logo_little_color.svg" alt="soundenglish_logo_mini_color">
 		</a>
 		<img id="hamburger" src="assets/illustrations/hamburger_icon.svg" alt="hamburger_menu_icon">
+		<nav id="navBar">
+			<ul id="navLinks">
+				<li><a href="index.html" data-translate="home"></a></li>
+				<li><a href="method.html" data-translate="method"></a></li>
+				<li><a href="about.html" data-translate="about"></a></li>
+				<li><a href="contact.html" data-translate="contact"></a></li>
+			</ul>
+			<select id="languageSwitcher">
+				<option value="en">English</option>
+				<option value="fr">Français</option>
+				<option value="pl">Polski</option>
+			</select>
+		</nav>
 	</header>
 	<content>
-
+		<div class="contentBlock packages">
+			<div id="packagesHeaders">
+				<h4 id="package1" class="active">Job interview</h2>
+				<h4 id="package2">Moving abroad</h2>
+				<h4 id="package3">Travel</h2>
+			</div>
+			<div id="packagesContent">
+				<div id="card1" class="packageCard active">Content for Job Interview</div>
+				<div id="card2" class="packageCard">Content for Moving Abroad</div>
+				<div id="card3" class="packageCard">Content for Travel</div>
+			</div>
+		</div>
+		<div class="contentBlock faqSection">
+			<h2 data-translate="faq_title"></h2>
+			<div class="faqItem">
+				<button class="question" data-translate="faq_question_1"></button>
+				<div class="answer">
+					<p data-translate="faq_answer_1"></p>
+				</div>
+			</div>
+			<div class="faqItem">
+				<button class="question" data-translate="faq_question_2"></button>
+				<div class="answer">
+					<p data-translate="faq_answer_2"></p>
+					<a href="about.html">
+						<button class="ctaButton" id="specialButton" data-translate="discover_method"></button>
+					</a>
+				</div>
+			</div>
+			<div class="faqItem">
+				<button class="question" data-translate="faq_question_3"></button>
+				<div class="answer">
+					<p data-translate="faq_answer_3"></p>
+					<a href="contact.html">
+						<button class="ctaButton" data-translate="contact_me"></button>
+					</a>
+				</div>
+			</div>
+			<div class="faqItem">
+				<button class="question" data-translate="faq_question_4"></button>
+				<div class="answer">
+					<p data-translate="faq_answer_4"></p>
+				</div>
+			</div>
+			<div class="faqItem">
+				<button class="question" data-translate="faq_question_5"></button>
+				<div class="answer">
+					<p data-translate="faq_answer_5"></p>
+					<!-- <a href="about.html">
+						<button class="ctaButton" id="specialButton" data-translate="learn_more"></button>
+					</a> -->
+				</div>
+			</div>
+			<!-- Add more FAQ items here -->
+		</div>
 	</content>
 	<footer>
 		<div>
