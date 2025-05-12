@@ -37,5 +37,23 @@
 }
 
 @media screen and (max-width: 845px) {
+    .aboutHero,
+    .aboutMethod,
+    .aboutContact {
+        width: 90%;
+        min-width: 0;
+        margin: 20px 0;
+    }
 
+    .aboutHero > img {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .aboutHero > p,
+    .aboutMethod > p,
+    .aboutContact > p {
+        width: 100%;
+        text-align: center;
+    }
 }

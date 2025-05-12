@@ -65,3 +65,58 @@
 .packageCard p {
 	text-align: left;
 }
+
+@media screen and (max-width: 845px) {
+	h2 {
+		z-index: 10;
+		position: relative;
+	}
+
+    #packagesHeaders {
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+		justify-content: left;
+        overflow-x: auto;
+        white-space: nowrap;
+		position: relative;
+		z-index: 1
+    }
+
+	#packagesHeaders::after {
+        content: '';
+        position: fixed;
+        top: 92px;
+        right: 10%;
+        width: 50px;
+        height: 200px;
+        background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+        pointer-events: none;
+		z-index: 0;
+	}
+
+    #packagesHeaders li {
+        flex: 0 0 auto;
+        text-align: center;
+    }
+
+    #packagesContent {
+        width: 90%;
+        margin: 20px auto;
+		z-index: 10;
+		position: relative;
+    }
+
+    .packageCard {
+        padding: 15px;
+    }
+
+    .packageCard img {
+        width: 100%;
+        height: auto;
+    }
+
+    .packageCard p {
+        font-size: 0.9rem;
+    }
+}
