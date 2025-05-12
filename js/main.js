@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	scriptFAQ.src = 'js/faq.js';
 	document.head.appendChild(scriptFAQ);
 
-	const scriptLanding = document.createElement('script');
-	scriptLanding.src = 'js/landing.js';
-	document.head.appendChild(scriptLanding);
+	// const scriptLanding = document.createElement('script');
+	// scriptLanding.src = 'js/landing.js';
+	// document.head.appendChild(scriptLanding);
 
 	const scriptPackages = document.createElement('script');
 	scriptPackages.src = 'js/packages.js';

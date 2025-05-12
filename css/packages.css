@@ -3,24 +3,65 @@
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	margin: 0;
 	padding: 20px;
 }
 
-#packagesHeaders h4 {
+#packagesHeaders li {
+	text-decoration: none;
+	list-style-type: none;
+	padding: 10px 20px;
+	border-radius: 32px;
+	color: #333;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-weight: normal;
-	cursor: pointer
+	font-size: 1rem;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	cursor: pointer;
 }
 
-#packagesHeaders h4.active {
-	color: #31928F;
-	font-size: larger;
+#packagesHeaders li:hover {
+	background-color: #f4f4f4;
+}
+
+#packagesHeaders li.active {
+	background-color: #DBAA6F;
+	color: white;
+}
+
+#packagesContent {
+	margin: auto;
+	width: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
 }
 
 .packageCard {
-    display: none;
+	display: none;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 32px;
+	background-color: #f9f9f9;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 1rem;
+	color: #333;
+	text-align: center;
 }
 
 .packageCard.active {
-    display: block;
+	display: block;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.packageCard img {
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.packageCard p {
+	text-align: left;
 }

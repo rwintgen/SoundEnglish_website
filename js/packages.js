@@ -1,4 +1,4 @@
-const packagesHeaders = document.querySelectorAll('#packagesHeaders h4');
+const packagesHeaders = document.querySelectorAll('#packagesHeaders li');
 const packageCards = document.querySelectorAll('.packageCard');
 
 packagesHeaders.forEach((header, index) => {
@@ -9,4 +9,4 @@ packagesHeaders.forEach((header, index) => {
 		header.classList.add('active');
 		packageCards[index].classList.add('active');
 	});
-});gi
+});

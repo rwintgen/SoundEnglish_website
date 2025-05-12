@@ -35,3 +35,7 @@
 	background-color: black;
 	color: whitesmoke;
 }
+
+@media screen and (max-width: 845px) {
+
+}

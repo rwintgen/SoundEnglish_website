@@ -32,31 +32,45 @@
 			<img id="mobileLogo" src="assets/logo_svg/logo_little_color.svg" alt="soundenglish_logo_mini_color">
 		</a>
 		<img id="hamburger" src="assets/illustrations/hamburger_icon.svg" alt="hamburger_menu_icon">
-		<nav id="navBar">
-			<ul id="navLinks">
-				<li><a href="index.html" data-translate="home"></a></li>
-				<li><a href="method.html" data-translate="method"></a></li>
-				<li><a href="about.html" data-translate="about"></a></li>
-				<li><a href="contact.html" data-translate="contact"></a></li>
-			</ul>
-			<select id="languageSwitcher">
-				<option value="en">English</option>
-				<option value="fr">Français</option>
-				<option value="pl">Polski</option>
-			</select>
-		</nav>
 	</header>
+	<nav id="navBar">
+		<ul id="navLinks">
+			<li><a href="index.html" data-translate="home"></a></li>
+			<!-- <li><a href="packages.html" data-translate="packages"></a></li> -->
+			<li><a href="method.html" data-translate="method"></a></li>
+			<li><a href="about.html" data-translate="about"></a></li>
+			<li><a href="contact.html" data-translate="contact"></a></li>
+		</ul>
+		<select id="languageSwitcher">
+			<option value="en">English</option>
+			<option value="fr">Français</option>
+			<option value="pl">Polski</option>
+		</select>
+	</nav>
 	<content>
 		<div class="contentBlock packages">
-			<div id="packagesHeaders">
-				<h4 id="package1" class="active">Job interview</h2>
-				<h4 id="package2">Moving abroad</h2>
-				<h4 id="package3">Travel</h2>
-			</div>
+			<h2 data-translate="packages_title"></h2>
+			<ul id="packagesHeaders">
+				<li class="active" data-translate="package_job_interview"></li>
+				<li data-translate="package_moving_abroad"></li>
+				<li data-translate="package_travel"></li>
+			</ul>
 			<div id="packagesContent">
-				<div id="card1" class="packageCard active">Content for Job Interview</div>
-				<div id="card2" class="packageCard">Content for Moving Abroad</div>
-				<div id="card3" class="packageCard">Content for Travel</div>
+				<div class="packageCard active">
+					<img src="https://placehold.co/550x300" alt="Job Interview">
+					<h3 data-translate="package_job_title"></h3>
+					<p data-translate="package_job_content"></p>
+				</div>
+				<div class="packageCard">
+					<img src="https://placehold.co/550x300" alt="Moving Abroad">
+					<h3 data-translate="package_moving_abroad_title"></h3>
+					<p data-translate="package_moving_abroad_content"></p>
+				</div>
+				<div class="packageCard">
+					<img src="https://placehold.co/550x300" alt="Travel">
+					<h3 data-translate="package_travel_title"></h3>
+					<p data-translate="package_travel_content"></p>
+				</div>
 			</div>
 		</div>
 		<div class="contentBlock faqSection">
