@@ -177,6 +177,7 @@
   text-align: left;
   position: relative;
   padding-right: 2rem;
+  color: black;
 }
 
 .expandable-title::after {
