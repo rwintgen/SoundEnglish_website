@@ -56,32 +56,77 @@
 					<p>Dołącz do wakacyjnych spotkań online, gdzie w grupie (2–8 osób) rozmawiamy na różne życiowe tematy a przy tym uczymy się nowego słownictwa.</p>
 					<p>Spotkania są niezobowiązujące a ilość miejsc ograniczona - każde spotkanie to nowy temat oraz nowi uczestnicy - kto pierwszy zarezerwuje miejsce ten lepszy więc nie zwlekaj!</p>
 					<div class="ctaButtons">
-						<button class="ctaButton" id="popupButton">Zarezerwuj</button>
+						<button class="ctaButton popupButton">Zarezerwuj</button>
 					</div>
 				</div>
 				<img src="assets/pictures/landing-main.jpg" alt="Girl on computer">
 			</div>
 		</div>
 		<div class="contentBlock" id="bulletPoints">
-			<h2>Co zyskasz?</h2>
-			<ul>
-				<li>
-					<img src="assets/illustrations/checkmark.svg">
-					Większą płynność w mówieniu
-				</li>
-				<li>
-					<img src="assets/illustrations/checkmark.svg">
-					Nowe, życiowe słownictwo
-				</li>
-				<li>
-					<img src="assets/illustrations/checkmark.svg">
-					Umiejętność radzenia sobie w codziennych rozmowach
-				</li>
-				<li>
-					<img src="assets/illustrations/checkmark.svg">
-					Feedback po każdych zajęciach
-				</li>
-			</ul>
+			<div class="expandables-container">
+				<h2>Sesje</h2>
+				<div class="expandable active">
+					<button class="expandable-title">Why pierogi aren't dumplings? Food talk!</button>
+					<div class="expandable-content">
+						<p>📅 9.07&nbsp;&nbsp;|&nbsp;&nbsp;🕕 18:30</p>
+						<p>Kto nie kocha jedzonka? 🍽️ To jeden z pierwszych tematów, które pojawiają się w rozmowach z obcokrajowcami – co jemy, jak jemy, dlaczego i jak to przygotowujemy.</p>
+						<p>Porozmawiajmy więc o jedzeniu po angielsku!<br>
+						<p>Luźna rozmowa, dużo śmiechu i masa apetycznych tematów – zapraszam! 😋</p>
+					</div>
+				</div>
+				<div class="expandable">
+					<button class="expandable-title">How to make small talk?</button>
+					<div class="expandable-content">
+						<p>📅 15.07&nbsp;&nbsp;|&nbsp;&nbsp;🕕 18:00</p>
+						<p>
+							Masz poziom B1/B2 z angielskiego, ale kiedy spotykasz obcokrajowca... nie wiesz, jak zacząć rozmowę? 😬<br>
+							Say no more!
+						</p>
+						<p>dzięki życiowym role-playom poznasz dużo życiowych wyrażeń przydatnych w codziennych rozmowach.</p>
+						<p>Przyjdź, poćwicz i poczuj się pewniej w small talku! 😊</p>
+					</div>
+				</div>
+				<div class="expandable">
+					<button class="expandable-title">Back to work.</button>
+					<div class="expandable-content">
+						<p>📅 27.08&nbsp;&nbsp;|&nbsp;&nbsp;🕕 18:30</p>
+						<p>
+							Miło było się wakacjować… ale wszystko, co dobre, szybko się kończy – urlop też! ☀️<br>
+							Czas wrócić do pracy, a tam mogą czekać na nas językowe wyzwania.
+						</p>
+						<p>
+							Podczas zajęć:<br>
+							💼 porozmawiamy o obowiązkach w pracy<br>
+							📋 opiszemy, co jest dla nas ważne (a co niekoniecznie)<br>
+							🧠 poznamy przydatne słownictwo
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="bulletpoints-left">
+				<h2>Co zyskasz?</h2>
+				<ul>
+					<li>
+						<img src="assets/illustrations/checkmark.svg">
+						Większą płynność w mówieniu
+					</li>
+					<li>
+						<img src="assets/illustrations/checkmark.svg">
+						Nowe, życiowe słownictwo
+					</li>
+					<li>
+						<img src="assets/illustrations/checkmark.svg">
+						Umiejętność radzenia sobie w codziennych rozmowach
+					</li>
+					<li>
+						<img src="assets/illustrations/checkmark.svg">
+						Feedback po każdych zajęciach
+					</li>
+				</ul>
+				<div class="ctaButtons">
+					<button class="ctaButton popupButton">Zarezerwuj</button>
+				</div>
+			</div>
 		</div>
 		<div class="contentBlock" id="iconsSection">
 			<h2>Idealne dla ciebie jeśli</h2>
@@ -102,8 +147,11 @@
 					<p>... a chcesz w końcu radzić sobie w codziennych sytuacjach językowych.</p>
 				</li>
 			</ul>
+			<div class="ctaButtons">
+				<button class="ctaButton popupButton buttonCentered">Zarezerwuj</button>
+			</div>
 		</div>
-		<div class="contentBlock contact">
+		<!-- <div class="contentBlock contact">
 			<h2>Get in Touch</h2>
 			<h3>Masz Pytania?</h3>
 			<form class="contactForm" action="https://api.web3forms.com/submit" method="POST">
@@ -153,13 +201,9 @@
 				<button class="question" data-translate="faq_question_5"></button>
 				<div class="answer">
 					<p data-translate="faq_answer_5"></p>
-					<!-- <a href="about.html">
-						<button class="ctaButton" id="specialButton" data-translate="learn_more"></button>
-					</a> -->
 				</div>
 			</div>
-			<!-- Add more FAQ items here -->
-		</div>
+		</div> -->
 		<div class="contentBlock socials">
 			<a href="https://www.facebook.com/soundenglishforadults" target="_blank" rel="noopener noreferrer">
 				<img src="assets/illustrations/icon-facebook.png" alt="Facebook">
@@ -194,7 +238,7 @@
       		<input type="text" id="popupName" name="name" required>
       		<label for="popupEmail">Email</label>
       		<input type="email" id="popupEmail" name="email" required>
-      		<label for="popupEventDropdown">Event</label>
+      		<label for="popupEventDropdown">Sesje</label>
 			<div class="custom-dropdown" id="popupEventDropdown">
 				<button type="button" class="dropdown-selected" id="dropdownSelected">Select an event</button>
 					<ul class="dropdown-list" id="dropdownList">

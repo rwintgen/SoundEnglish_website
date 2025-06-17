@@ -1,11 +1,13 @@
-const popupBtn = document.getElementById('popupButton');
+const popupBtns = document.querySelectorAll('.popupButton');
 const popupOverlay = document.getElementById('popupOverlay');
 const popupClose = document.getElementById('popupCloseBtn');
 
-if (popupBtn && popupOverlay && popupClose) {
-    popupBtn.addEventListener('click', function() {
-        popupOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+if (popupBtns.length && popupOverlay && popupClose) {
+    popupBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            popupOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
     });
 
     popupClose.addEventListener('click', function() {
