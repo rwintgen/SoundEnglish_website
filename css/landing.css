@@ -72,17 +72,7 @@
 	color: white
 }
 
-.ctaButton:last-child {
-    background: rgba(238, 238, 238);
-    color: black;
-}
-
 .ctaButton:hover {
-    background: black;
-	color: white;
-}
-
-.ctaButton:last-child:hover {
     background: black;
 	color: white;
 }
@@ -161,7 +151,9 @@
 
 #iconsSection li h3 {
     font-size: larger;
+    font-weight: 600;
     text-align: left;
+    color: #31928F;
     width: 100%;
 	padding-left: 0;
 	margin-left: 0;
@@ -171,4 +163,32 @@
     color: black;
     margin: 0;
     line-height: 1.3;
+}
+
+.contact h2 {
+    text-align: center;
+    color: black;
+}
+
+.contact h3 {
+    color: #31928F;
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.socials a {
+    text-decoration: none;
+}
+
+.socials img {
+    width: 60px;
+    height: 60px;
+    margin: 0 1rem;
+    border-radius: 16px;
+}
+
+.socials img:hover {
+    filter: brightness(0);
 }
