@@ -1,5 +1,5 @@
 const languageSwitcher = document.getElementById('languageSwitcher');
-const defaultLanguage = 'en';
+const defaultLanguage = 'pl';
 let currentLanguage = localStorage.getItem('language') || defaultLanguage;
 
 function loadTranslations(language) {
