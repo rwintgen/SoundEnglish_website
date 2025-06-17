@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FREE English lesson</title>
+	<title>The Talk Spot</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon_16x16.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon_32x32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon_48x48.png">
@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/keypoints.css">
 	<link rel="stylesheet" href="css/faq.css">
 	<link rel="stylesheet" href="css/about.css">
+	<link rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<script src="js/main.js"></script>
 </head>
@@ -26,98 +27,79 @@
 		</a>
 		<img id="hamburger" src="assets/illustrations/hamburger_icon.svg" alt="hamburger_menu_icon">
 	</header>
-	<content>
+	<nav id="navBar">
+		<ul id="navLinks">
+			<li><a href="index.html" data-translate="home" target="_blank"></a></li>
+			<!-- <li><a href="packages.html" data-translate="packages"></a></li> -->
+			<li><a href="method.html" data-translate="method" target="_blank"></a></li>
+			<li><a href="about.html" data-translate="about" target="_blank"></a></li>
+			<li><a href="contact.html" data-translate="contact" target="_blank"></a></li>
+		</ul>
 		<select id="languageSwitcher">
 			<option value="en">English</option>
 			<option value="fr">Français</option>
 			<option value="pl">Polski</option>
 		</select>
+	</nav>
+	<content>
 		<div class="contentBlock" id="landingTitle">
-			<h1>Meet your new English coach</h1>
-			<p>
-				Ready to take your englidh to the next level? <br>
-				I've helped hundreds of adults boost their English over my 10+ years of teaching English.<br>
-				Are you ready to unlock the most fundamental skill to connect with people around the world?<br>
-				Take your english to the next level now!
-			</p>
-			<button class="ctaButton" id="landingMainCta1">Get a FREE discovery lesson</button>
-			<img src="https://placehold.co/1800x1000" alt="CHANGEME">
+			<h1>Zapisz się na <span class="titleHighlight">darmowe</span> zajęcia z angielskiego!</h1>
 		</div>
-		<div class="contentBlock landingContact" id="contactSection1">
-			<h2>Claim your free English lesson!</h2>
-			<form class="contactForm" action="https://api.web3forms.com/submit" method="POST">
-				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
-				<label for="name" data-translate="contact_name"></label>
-				<input type="text" id="name" name="name" required>
-				<label for="email" data-translate="contact_email"></label>
-				<input type="email" id="email" name="email" required>
-				<button type="submit" class="ctaButton">Claim</button>
-			</form>
-			<p>Leave me your email address so we can schedule our first lesson together!</p>
-		</div>
-		<div class="contentBlock keyPoints">
-			<div class="keyPoint">
-				<div class="keyPointPicture">
-					<img src="assets/pictures/keypoint_1.jpg" alt="CHANGEME">
+		<div class="contentBlock" id="landingMain">
+			<div class="textAndPicture">
+				<div class="textSection">
+					<h2>The <span id="textBrown">Talk</span> <span id="textBlue">Spot</span> - rozgadaj się przez wakacje!</h2>
+					<p>Chcesz mówić swobodniej po angielsku, ćwiczyć konwersację i poznawać nowe słownictwo?</p>
+					<p>Dołącz do wakacyjnych spotkań online, gdzie w grupie (2–8 osób) rozmawiamy na różne życiowe tematy a przy tym uczymy się nowego słownictwa.</p>
+					<p>Spotkania są niezobowiązujące a ilość miejsc ograniczona - każde spotkanie to nowy temat oraz nowi uczestnicy - kto pierwszy zarezerwuje miejsce ten lepszy więc nie zwlekaj!</p>
+					<div class="ctaButtons">
+						<button class="ctaButton" id="popupButton">Zareserwuj</button>
+						<button class="ctaButton" data-translate="learn_more"></button>
+					</div>
 				</div>
-				<div class="keyPointText">
-					<h3 data-translate="keypoint_1_title"></h3>
-					<p data-translate="keypoint_1_text"></p>
-				</div>
-			</div>
-			<div class="keyPointRev">
-				<div class="keyPointPicture">
-					<img src="assets/pictures/keypoint_2.jpg" alt="CHANGEME">
-				</div>
-				<div class="keyPointText">
-					<h3 data-translate="keypoint_2_title"></h3>
-					<p data-translate="keypoint_2_text"></p>
-				</div>
-			</div>
-			<div class="keyPoint">
-				<div class="keyPointPicture">
-					<img src="assets/pictures/keypoint_3.jpg" alt="CHANGEME">
-				</div>
-				<div class="keyPointText">
-					<h3 data-translate="keypoint_3_title"></h3>
-					<p data-translate="keypoint_3_text"></p>
-				</div>
-			</div>
-			<div class="keyPointRev">
-				<div class="keyPointPicture">
-					<img src="assets/pictures/keypoint_4.jpg" alt="CHANGEME">
-				</div>
-				<div class="keyPointText">
-					<h3 data-translate="keypoint_4_title"></h3>
-					<p data-translate="keypoint_4_text"></p>
-				</div>
-			</div>
-			<div class="keyPoint">
-				<div class="keyPointPicture">
-					<img src="assets/pictures/keypoint_5.jpg" alt="CHANGEME">
-				</div>
-				<div class="keyPointText">
-					<h3 data-translate="keypoint_5_title"></h3>
-					<p data-translate="keypoint_5_text"></p>
-				</div>
+				<img src="assets/pictures/landing-main.jpg" alt="Girl on computer">
 			</div>
 		</div>
-		<div class="contentBlock landingContact">
-			<h2>Get your free lesson now!</h2>
-			<form class="contactForm" action="https://api.web3forms.com/submit" method="POST">
-				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
-				<label for="name" data-translate="contact_name"></label>
-				<input type="text" id="name" name="name" required>
-				<label for="email" data-translate="contact_email"></label>
-				<input type="email" id="email" name="email" required>
-				<button type="submit" class="ctaButton">Send</button>
-			</form>
-			<p>Leave me your email address so we can schedule our first lesson together!</p>
+		<div class="contentBlock" id="bulletPoints">
+			<h2>Co zyskasz?</h2>
+			<ul>
+				<li>
+					<img src="assets/illustrations/checkmark.svg">
+					Większą płynność w mówieniu
+				</li>
+				<li>
+					<img src="assets/illustrations/checkmark.svg">
+					Nowe, życiowe słownictwo
+				</li>
+				<li>
+					<img src="assets/illustrations/checkmark.svg">
+					Umiejętność radzenia sobie w codziennych rozmowach
+				</li>
+				<li>
+					<img src="assets/illustrations/checkmark.svg">
+					Feedback po każdych zajęciach
+				</li>
+			</ul>
 		</div>
-		<div class="contentBlock">
-			<h1>Title blablabla</h1>
-			<p>Some text about the methodology, Some text about the methodology, </p>
-			<button class="ctaButton" id="landingMainCta2">Get a FREE discovery lesson</button>
+		<div class="contentBlock" id="iconsSection">
+			<h2>Idealne dla ciebie jeśli</h2>
+			<ul>
+				<li>
+					<img src="assets/illustrations/landing-icon-1.png">
+					<h3>Title</h3>
+					<p>Content</p>
+				</li>
+				<li>
+					<img src="assets/illustrations/landing-icon-2.png">
+					<h3>Title</h3>
+					<p>Content</p>
+				</li>
+				<li>
+					<img src="assets/illustrations/landing-icon-3.png">
+					<h3>Title</h3>
+					<p>Content</p>
+				</li>
+			</ul>
 		</div>
 		<div class="contentBlock faqSection">
 			<h2 data-translate="faq_title"></h2>
@@ -161,19 +143,6 @@
 				</div>
 			</div>
 			<!-- Add more FAQ items here -->
-		</div>
-
-		<div class="contentBlock landingContact" id="contactSection2">
-			<h2>Get your free english lesson now!</h2>
-			<form class="contactForm" action="https://api.web3forms.com/submit" method="POST">
-				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
-				<label for="name" data-translate="contact_name"></label>
-				<input type="text" id="name" name="name" required>
-				<label for="email" data-translate="contact_email"></label>
-				<input type="email" id="email" name="email" required>
-				<button type="submit" class="ctaButton">Send</button>
-			</form>
-			<p>Leave me your email address so we can schedule our first lesson together!</p>
 		</div>
 	</content>
 	<footer>
