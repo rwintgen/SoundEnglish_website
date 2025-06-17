@@ -17,7 +17,9 @@
 	<link rel="stylesheet" href="css/faq.css">
 	<link rel="stylesheet" href="css/about.css">
 	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/overlay.css">
 	<link rel="stylesheet" href="css/landing.css">
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 	<script src="js/main.js"></script>
 </head>
 <body>
@@ -182,4 +184,28 @@
 		</nav>
 	</footer>
 </body>
+
+<div id="popupOverlay" class="popup-overlay">
+  	<div class="popup-content">
+    	<button class="popup-close" id="popupCloseBtn">&times;</button>
+    	<h2>Book your Talk Spot</h2>
+    	<form id="popupContactForm">
+      		<label for="popupName">Imię</label>
+      		<input type="text" id="popupName" name="name" required>
+      		<label for="popupEmail">Email</label>
+      		<input type="email" id="popupEmail" name="email" required>
+      		<label for="popupEventDropdown">Event</label>
+			<div class="custom-dropdown" id="popupEventDropdown">
+				<button type="button" class="dropdown-selected" id="dropdownSelected">Select an event</button>
+					<ul class="dropdown-list" id="dropdownList">
+						<li data-value="event_food">Why pierogi aren't dumplings? Food talk! | 09/07 at 18:30 (CET)</li>
+						<li data-value="event_small_talk">How to make small talk? | 15/07 at 18:00 (CET)</li>
+						<li data-value="event_work">Back to work. | 27/08 at 18:30 (CET)</li>
+					</ul>
+				<input type="hidden" name="event" id="popupEventInput" required>
+			</div>
+      		<button type="submit" class="ctaButton">Register to this event!</button>
+    	</form>
+  	</div>
+</div>
 </html>

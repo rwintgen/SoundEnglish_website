@@ -43,4 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	const scriptPackages = document.createElement('script');
 	scriptPackages.src = 'js/packages.js';
 	document.head.appendChild(scriptPackages);
+
+	const scriptOverlay = document.createElement('script');
+	scriptOverlay.src = 'js/overlay.js';
+	document.head.appendChild(scriptOverlay);
 });
