@@ -71,6 +71,7 @@ if (popupForm) {
             return;
         }
         if (!eventInput.value.trim()) {
+            alert('Please select an event.');
             document.getElementById('dropdownSelected').focus();
             return;
         }
