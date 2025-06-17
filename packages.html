@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/nav.css">
 	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/contact.css">
 	<link rel="stylesheet" href="css/mission.css">
 	<link rel="stylesheet" href="css/footer.css">
 	<link rel="stylesheet" href="css/hero.css">
@@ -72,6 +73,19 @@
 					<p data-translate="package_travel_content"></p>
 				</div>
 			</div>
+		</div>
+		<div class="contentBlock contact">
+			<h2 data-translate="contact"></h2>
+			<form class="contactForm" action="https://api.web3forms.com/submit" method="POST">
+				<input type="hidden" name="access_key" value="e18a17bf-d80a-47e5-bc3a-9b2448ccf4f1">
+				<label for="name" data-translate="contact_name"></label>
+				<input type="text" id="name" name="name" required>
+				<label for="email" data-translate="contact_email"></label>
+				<input type="email" id="email" name="email" required>
+				<label for="message" data-translate="contact_message"></label>
+				<textarea id="message" name="message" required></textarea>
+				<button type="submit" class="ctaButton" data-translate="contact_send"></button>
+			</form>
 		</div>
 		<div class="contentBlock faqSection">
 			<h2 data-translate="faq_title"></h2>
