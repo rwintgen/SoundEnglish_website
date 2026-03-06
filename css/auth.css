@@ -1,0 +1,232 @@
+/* Authentication styles */
+
+.auth-button {
+    padding: 8px 18px;
+    background-color: #31928F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-button:hover {
+    background-color: #267975;
+    transform: scale(1.03);
+}
+
+.auth-button.logout {
+    background-color: #DBAA6F;
+}
+
+.auth-button.logout:hover {
+    background-color: #c8954f;
+}
+
+@media screen and (max-width: 845px) {
+    .auth-button {
+        display: none;
+    }
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+    display: none;
+    margin-top: 10px;
+    z-index: 200;
+}
+
+.user-menu-dropdown.active {
+    display: block;
+}
+
+.user-menu-dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
+}
+
+.user-menu-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.user-menu-dropdown a:hover {
+    background: #f5f5f5;
+}
+
+.user-email {
+    padding: 12px 16px;
+    color: #666;
+    font-size: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Login Modal */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-modal.active {
+    display: flex;
+}
+
+.auth-modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 400px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-modal-header {
+    margin-bottom: 30px;
+}
+
+.auth-modal h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.auth-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-close:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-submit:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.auth-error {
+    color: #f5576c;
+    font-size: 13px;
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff5f6;
+    border-left: 3px solid #f5576c;
+    border-radius: 3px;
+}
+
+.auth-loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-button {
+        padding: 8px 15px;
+        font-size: 12px;
+        right: 15px;
+    }
+
+    .auth-modal-content {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .auth-modal h2 {
+        font-size: 20px;
+    }
+}

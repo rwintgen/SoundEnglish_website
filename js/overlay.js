@@ -50,9 +50,8 @@ if (dropdown && dropdownBtn && dropdownList && dropdownInput) {
 	});
 }
 
-const supabaseUrl = 'https://zlbbywikacnyjwccjrqk.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsYmJ5d2lrYWNueWp3Y2NqcnFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNzA0NjksImV4cCI6MjA2NTc0NjQ2OX0.ry9L10j5bc5ULUrsutFZStMHyX6S-BJTPYui7mnih4o';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+// Firebase is now used instead of Supabase
+// Firebase SDK must be loaded in HTML before this script
 
 const popupForm = document.getElementById('popupContactForm');
 if (popupForm) {
@@ -78,23 +77,31 @@ if (popupForm) {
             return;
         }
 
-        // Supabase insert
-        const { error } = await supabase
-            .from('event_registrations')
-            .insert([{ 
-                name: name.value.trim(), 
-                email: email.value.trim(), 
-                event: eventInput.value.trim() 
-            }]);
+        try {
+            // Save to Firebase using global FirebaseService
+            if (typeof window.FirebaseService !== 'undefined') {
+                const result = await window.FirebaseService.saveContactForm(
+                    name.value.trim(), 
+                    email.value.trim(), 
+                    eventInput.value.trim()
+                );
 
-        if (error) {
+                if (result.success) {
+                    alert('Thank you for registering!');
+                    popupForm.reset();
+                    document.getElementById('dropdownSelected').textContent = 'Select an event';
+                    document.getElementById('popupOverlay').classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    alert('Error submitting form: ' + result.error);
+                }
+            } else {
+                alert('Firebase service not initialized. Please refresh the page.');
+                console.error('FirebaseService not available');
+            }
+        } catch (error) {
             alert('Error submitting form. Please try again.');
-        } else {
-            alert('Thank you for registering!');
-            popupForm.reset();
-            document.getElementById('dropdownSelected').textContent = 'Select an event';
-            document.getElementById('popupOverlay').classList.remove('active');
-            document.body.style.overflow = '';
+            console.error('Form submission error:', error);
         }
     });
 }

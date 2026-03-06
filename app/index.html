@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundEnglish — Homework App</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon_32x32.png">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="../js/firebase-service.js"></script>
+</head>
+<body>
+
+    <div id="authLoading" class="auth-loading"><div class="spinner"></div></div>
+
+    <div id="appShell" style="display:none;">
+
+        <aside id="sidebar">
+            <div id="sidebarLogo">
+                <img src="../assets/logo_svg/logo_full_color.svg" alt="SoundEnglish">
+            </div>
+            <nav id="sidebarNav">
+                <button class="nav-item active" data-section="chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Generate
+                </button>
+                <button class="nav-item" data-section="homework">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Homework
+                </button>
+                <button class="nav-item" data-section="students">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Students
+                </button>
+            </nav>
+            <div id="sidebarUser">
+                <span id="userEmail"></span>
+                <button id="signOutBtn">Sign out</button>
+            </div>
+        </aside>
+
+        <main id="mainContent">
+
+            <!-- ===== GENERATE SECTION (default) ===== -->
+            <section id="chatSection" class="section active">
+                <div class="section-header">
+                    <h1>Generate Homework</h1>
+                    <div id="modelSelector">
+                        <label for="modelSelect">Model</label>
+                        <select id="modelSelect">
+                            <option value="">Loading models…</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="chatLayout">
+                    <div id="chatContext" class="card">
+                        <div class="form-group">
+                            <label>Student</label>
+                            <select id="chatStudent">
+                                <option value="">— no student —</option>
+                            </select>
+                        </div>
+                        <div id="studentPreview" class="student-preview" style="display:none;"></div>
+                        <div class="form-group">
+                            <label>Exercise types</label>
+                            <div id="chatHwTypePills" class="hw-pills"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Lesson notes</label>
+                            <textarea id="chatTopic" rows="6" placeholder="What did you cover today? Key vocabulary, grammar structures, situations to reinforce…"></textarea>
+                        </div>
+                        <button class="btn-primary full-width" id="generateBtn">Generate</button>
+                    </div>
+
+                    <div id="chatOutput" class="card">
+                        <div id="outputHeader">
+                            <h3>Output</h3>
+                            <div id="outputActions" style="display:none;">
+                                <button class="btn-secondary" id="copyBtn">Copy</button>
+                            </div>
+                        </div>
+                        <div id="outputLoading" style="display:none;">
+                            <div class="spinner"></div>
+                            <p>Generating…</p>
+                        </div>
+                        <div id="outputContent">
+                            <div class="output-placeholder">
+                                <p>Fill in the context on the left and click <strong>Generate</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== HOMEWORK SECTION ===== -->
+            <section id="homeworkSection" class="section">
+                <div class="section-header">
+                    <h1>Exercise Templates</h1>
+                    <button class="btn-primary" id="newHomeworkBtn">+ New type</button>
+                </div>
+                <p class="section-desc">Each template defines how a type of exercise is generated. Edit the prompt to fine-tune the AI output.</p>
+
+                <div id="hwTypeList"></div>
+                <div id="hwTypeEmpty" class="empty-state" style="display:none;">
+                    <p>No templates yet. Click <strong>+ New type</strong> to add one.</p>
+                </div>
+            </section>
+
+            <!-- ===== STUDENTS SECTION ===== -->
+            <section id="studentsSection" class="section">
+                <div class="section-header">
+                    <h1>Students</h1>
+                    <button class="btn-primary" id="newStudentBtn">+ New Student</button>
+                </div>
+
+                <div id="studentForm" class="card form-card" style="display:none;">
+                    <h2 id="studentFormTitle">Add Student</h2>
+                    <input type="hidden" id="studentId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="studentName" placeholder="Full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Native language</label>
+                            <select id="studentNativeLang">
+                                <option value="French">French</option>
+                                <option value="Polish">Polish</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select id="studentLevel">
+                                <option value="A1">A1 – Beginner</option>
+                                <option value="A2">A2 – Elementary</option>
+                                <option value="B1">B1 – Intermediate</option>
+                                <option value="B2" selected>B2 – Upper Intermediate</option>
+                                <option value="C1">C1 – Advanced</option>
+                                <option value="C2">C2 – Proficiency</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Themes of interest</label>
+                            <input type="text" id="studentThemes" placeholder="e.g. business, travel, sport">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Areas to focus on</label>
+                        <textarea id="studentFocus" rows="2" placeholder="e.g. past tenses, articles, pronunciation…"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="studentNotes" rows="2" placeholder="Any other notes…"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-secondary" id="cancelStudentBtn">Cancel</button>
+                        <button class="btn-primary" id="saveStudentBtn">Save</button>
+                    </div>
+                </div>
+
+                <div id="studentList" class="card-grid"></div>
+                <div id="studentsEmpty" class="empty-state" style="display:none;">
+                    <p>No students yet. Click <strong>+ New Student</strong> to add one.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ===== HOMEWORK TYPE MODAL ===== -->
+    <div id="hwTypeModal" class="modal-backdrop" style="display:none;" aria-modal="true" role="dialog">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="hwTypeFormTitle">New exercise type</h2>
+                <button class="modal-close" id="cancelHwTypeBtn" aria-label="Close">&times;</button>
+            </div>
+            <input type="hidden" id="hwTypeId">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="hwTypeName" placeholder="e.g. Gap Fill">
+            </div>
+            <div class="form-group">
+                <label>Prompt — instructions sent to the AI</label>
+                <textarea id="hwTypePrompt" rows="18" placeholder="Describe exactly how the AI should build this exercise…"></textarea>
+            </div>
+            <div class="form-actions">
+                <button class="btn-secondary" id="cancelHwTypeBtnFooter">Cancel</button>
+                <button class="btn-primary" id="saveHwTypeBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
