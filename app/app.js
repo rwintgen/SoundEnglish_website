@@ -9,7 +9,9 @@
     let currentUser   = null;
     let students      = [];       // cached
     let homeworkTypes = [];       // cached template list
+    let savedHomeworks = [];      // cached saved homeworks
     let lastOutput    = null;     // last generated text (ephemeral)
+    let lastGenerateMeta = null;  // metadata for saving
 
     // ---- Boot ----
     const waitForFirebase = setInterval(() => {
@@ -23,11 +25,13 @@
                 document.getElementById('appShell').style.display = 'flex';
                 await loadStudents();
                 await loadHomeworkTypes();
+                await loadHomeworks();
                 await populateModelDropdown();
                 setupNav();
                 setupGenerate();
                 setupHomeworkTypes();
                 setupStudents();
+                setupHwDetailModal();
                 restoreChatState();
                 document.getElementById('signOutBtn').addEventListener('click', async () => {
                     await window.FirebaseService.signOut();
@@ -82,6 +86,10 @@
                     <button class="btn-danger">Delete</button>
                 </div>
             `;
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.btn-edit') || e.target.closest('.btn-danger')) return;
+                openStudentDetail(s);
+            });
             card.querySelector('.btn-edit').addEventListener('click', () => openEditStudent(s));
             card.querySelector('.btn-danger').addEventListener('click', () => deleteStudent(s.id, s.name));
             grid.appendChild(card);
@@ -364,11 +372,11 @@ Model translation:
             card.innerHTML = `
                 <div class="hwt-name">${escHtml(t.name)}</div>
                 <div class="hwt-prompt">${escHtml(t.prompt)}</div>
-                <div class="hwtt-actions">
-                        <button class="btn-secondary btn-edit">Edit</button>
-                        <button class="btn-danger">Delete</button>
-                    </div>
-                `;
+                <div class="hwt-actions">
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-danger">Delete</button>
+                </div>
+            `;
             card.querySelector('.btn-edit').addEventListener('click', () => openEditHwType(t));
             card.querySelector('.btn-danger').addEventListener('click', () => deleteHwType(t.id, t.name));
             list.appendChild(card);
@@ -500,6 +508,7 @@ Model translation:
 
         document.getElementById('generateBtn').addEventListener('click', generate);
         document.getElementById('copyBtn').addEventListener('click', copyOutput);
+        document.getElementById('saveHwBtn').addEventListener('click', saveHomework);
     }
 
     function restoreChatState() {
@@ -611,6 +620,14 @@ Model translation:
                 }
             }
             showOutput(fullText);
+            // Store metadata for the Save button
+            lastGenerateMeta = {
+                studentId: sId || null,
+                studentName: s ? s.name : null,
+                typeNames: templates.map(t => t.name),
+                topic: topic,
+                model: modelId,
+            };
         } catch (err) {
             document.getElementById('outputLoading').style.display = 'none';
             const isQuota = /quota|billing|RESOURCE_EXHAUSTED/i.test(err.message);
@@ -706,6 +723,172 @@ Model translation:
         prompt += '- Adapt vocabulary and difficulty precisely to the student\'s level.\n';
 
         return prompt;
+    }
+
+    // ============================================================
+    // SAVED HOMEWORKS
+    // ============================================================
+    async function loadHomeworks() {
+        const result = await window.FirebaseService.getAllHomeworks();
+        savedHomeworks = result.success ? result.data : [];
+        renderSavedHomeworks();
+    }
+
+    function renderSavedHomeworks() {
+        const list  = document.getElementById('savedHwList');
+        const empty = document.getElementById('savedHwEmpty');
+        list.innerHTML = '';
+        if (savedHomeworks.length === 0) { empty.style.display = 'block'; return; }
+        empty.style.display = 'none';
+        savedHomeworks.forEach(hw => {
+            list.appendChild(buildHwRow(hw));
+        });
+    }
+
+    function buildHwRow(hw) {
+        const row = document.createElement('div');
+        row.className = 'saved-hw-row';
+        const date = hw.createdAt ? new Date(hw.createdAt.seconds * 1000) : new Date();
+        const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        const types = (hw.typeNames || []).map(n => `<span class="badge">${escHtml(n)}</span>`).join('');
+        const preview = (hw.content || '').slice(0, 120).replace(/\n/g, ' ');
+        row.innerHTML = `
+            <div class="saved-hw-date">${dateStr}</div>
+            <div class="saved-hw-student">${escHtml(hw.studentName || '—')}</div>
+            <div class="saved-hw-types">${types}</div>
+            <div class="saved-hw-preview">${escHtml(preview)}</div>
+        `;
+        row.addEventListener('click', () => openHwDetail(hw));
+        return row;
+    }
+
+    async function saveHomework() {
+        if (!lastOutput || !lastGenerateMeta) return;
+        const btn = document.getElementById('saveHwBtn');
+        btn.disabled = true; btn.textContent = 'Saving…';
+        const result = await window.FirebaseService.createHomework({
+            content: lastOutput,
+            studentId: lastGenerateMeta.studentId,
+            studentName: lastGenerateMeta.studentName,
+            typeNames: lastGenerateMeta.typeNames,
+            topic: lastGenerateMeta.topic,
+            model: lastGenerateMeta.model,
+        });
+        btn.disabled = false; btn.textContent = 'Saved!';
+        setTimeout(() => { btn.textContent = 'Save'; }, 2000);
+        if (result.success) {
+            await loadHomeworks();
+        } else {
+            alert('Error saving: ' + result.error);
+            btn.textContent = 'Save';
+        }
+    }
+
+    // ---- Homework detail modal ----
+    function setupHwDetailModal() {
+        document.getElementById('hwDetailModal').addEventListener('click', e => {
+            if (e.target === document.getElementById('hwDetailModal')) {
+                document.getElementById('hwDetailModal').style.display = 'none';
+            }
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && document.getElementById('hwDetailModal').style.display !== 'none') {
+                document.getElementById('hwDetailModal').style.display = 'none';
+            }
+        });
+    }
+
+    function openHwDetail(hw) {
+        const date = hw.createdAt ? new Date(hw.createdAt.seconds * 1000) : new Date();
+        const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        const types = (hw.typeNames || []).join(', ');
+        document.getElementById('hwDetailTitle').textContent = hw.studentName ? hw.studentName + ' — ' + dateStr : dateStr;
+        document.getElementById('hwDetailMeta').innerHTML =
+            `<strong>Types:</strong> ${escHtml(types)}<br>`
+            + `<strong>Topic:</strong> ${escHtml((hw.topic || '').slice(0, 200))}`;
+        document.getElementById('hwDetailContent').textContent = hw.content || '';
+        document.getElementById('hwDetailModal').style.display = 'flex';
+
+        // Wire up buttons each time (simpler than persistent listeners with changing hw ref)
+        const closeBtn = document.getElementById('closeHwDetailBtn');
+        const copyBtn  = document.getElementById('copyHwDetailBtn');
+        const delBtn   = document.getElementById('deleteHwDetailBtn');
+        closeBtn.onclick = () => { document.getElementById('hwDetailModal').style.display = 'none'; };
+        copyBtn.onclick  = () => {
+            navigator.clipboard.writeText(hw.content || '').then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+            });
+        };
+        delBtn.onclick = async () => {
+            if (!confirm('Delete this saved homework?')) return;
+            const res = await window.FirebaseService.deleteHomework(hw.id);
+            if (res.success) {
+                document.getElementById('hwDetailModal').style.display = 'none';
+                await loadHomeworks();
+                // Refresh student detail view if open
+                const detailView = document.getElementById('studentDetailView');
+                if (detailView.style.display !== 'none') {
+                    const s = students.find(st => st.id === hw.studentId);
+                    if (s) openStudentDetail(s);
+                }
+            }
+        };
+    }
+
+    // ============================================================
+    // STUDENT DETAIL VIEW
+    // ============================================================
+    async function openStudentDetail(s) {
+        document.getElementById('studentListView').style.display = 'none';
+        const view = document.getElementById('studentDetailView');
+        view.style.display = 'block';
+
+        // Render student info card
+        const card = document.getElementById('studentDetailCard');
+        card.innerHTML = `
+            <div class="s-name">${escHtml(s.name)}</div>
+            <div class="s-meta">
+                <span class="badge badge-level">${escHtml(s.level)}</span>
+                <span class="badge badge-lang">${escHtml(s.nativeLang)}</span>
+            </div>
+            ${s.themes ? `<div class="s-detail"><strong>Themes:</strong> ${escHtml(s.themes)}</div>` : ''}
+            ${s.focus  ? `<div class="s-detail"><strong>Focus:</strong> ${escHtml(s.focus)}</div>`  : ''}
+            ${s.notes  ? `<div class="s-detail"><strong>Notes:</strong> ${escHtml(s.notes)}</div>`  : ''}
+            <div class="card-actions">
+                <button class="btn-edit">Edit</button>
+                <button class="btn-danger">Delete</button>
+            </div>
+        `;
+        card.querySelector('.btn-edit').addEventListener('click', () => openEditStudent(s));
+        card.querySelector('.btn-danger').addEventListener('click', async () => {
+            await deleteStudent(s.id, s.name);
+            closeStudentDetail();
+        });
+
+        // Fetch homeworks for this student
+        const hwList = document.getElementById('studentHwList');
+        const hwEmpty = document.getElementById('studentHwEmpty');
+        hwList.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">Loading…</div>';
+        hwEmpty.style.display = 'none';
+
+        const result = await window.FirebaseService.getHomeworksByStudent(s.id);
+        const hws = result.success ? result.data : [];
+        hwList.innerHTML = '';
+        if (hws.length === 0) {
+            hwEmpty.style.display = 'block';
+        } else {
+            hwEmpty.style.display = 'none';
+            hws.forEach(hw => hwList.appendChild(buildHwRow(hw)));
+        }
+
+        // Back button
+        document.getElementById('backToStudentsBtn').onclick = closeStudentDetail;
+    }
+
+    function closeStudentDetail() {
+        document.getElementById('studentDetailView').style.display = 'none';
+        document.getElementById('studentListView').style.display = 'block';
     }
 
     function escHtml(str) {

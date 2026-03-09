@@ -80,6 +80,7 @@
                         <div id="outputHeader">
                             <h3>Output</h3>
                             <div id="outputActions" style="display:none;">
+                                <button class="btn-secondary" id="saveHwBtn">Save</button>
                                 <button class="btn-secondary" id="copyBtn">Copy</button>
                             </div>
                         </div>
@@ -104,26 +105,64 @@
                 </div>
                 <p class="section-desc">Each template defines how a type of exercise is generated. Edit the prompt to fine-tune the AI output.</p>
 
-                <div id="hwTypeList"></div>
+                <div id="hwTypeList" class="card-grid"></div>
                 <div id="hwTypeEmpty" class="empty-state" style="display:none;">
                     <p>No templates yet. Click <strong>+ New type</strong> to add one.</p>
+                </div>
+
+                <div id="savedHomeworksWrapper">
+                    <h2 class="sub-section-title">Saved Homeworks</h2>
+                    <div id="savedHwList"></div>
+                    <div id="savedHwEmpty" class="empty-state" style="display:none;">
+                        <p>No saved homeworks yet. Generate exercises and click <strong>Save</strong> to keep them here.</p>
+                    </div>
                 </div>
             </section>
 
             <!-- ===== STUDENTS SECTION ===== -->
             <section id="studentsSection" class="section">
-                <div class="section-header">
-                    <h1>Students</h1>
-                    <button class="btn-primary" id="newStudentBtn">+ New Student</button>
+                <!-- Student list view -->
+                <div id="studentListView">
+                    <div class="section-header">
+                        <h1>Students</h1>
+                        <button class="btn-primary" id="newStudentBtn">+ New Student</button>
+                    </div>
+
+                    <div id="studentList" class="card-grid"></div>
+                    <div id="studentsEmpty" class="empty-state" style="display:none;">
+                        <p>No students yet. Click <strong>+ New Student</strong> to add one.</p>
+                    </div>
                 </div>
 
-                <div id="studentList" class="card-grid"></div>
-                <div id="studentsEmpty" class="empty-state" style="display:none;">
-                    <p>No students yet. Click <strong>+ New Student</strong> to add one.</p>
+                <!-- Student detail view (hidden by default) -->
+                <div id="studentDetailView" style="display:none;">
+                    <button class="btn-back" id="backToStudentsBtn">&larr; All students</button>
+                    <div id="studentDetailCard" class="card student-detail-card"></div>
+                    <h2 class="sub-section-title">Homework History</h2>
+                    <div id="studentHwList"></div>
+                    <div id="studentHwEmpty" class="empty-state" style="display:none;">
+                        <p>No homeworks generated for this student yet.</p>
+                    </div>
                 </div>
             </section>
 
         </main>
+    </div>
+
+    <!-- ===== HOMEWORK DETAIL MODAL ===== -->
+    <div id="hwDetailModal" class="modal-backdrop" style="display:none;" aria-modal="true" role="dialog">
+        <div class="modal-box modal-box-wide">
+            <div class="modal-header">
+                <h2 id="hwDetailTitle">Homework</h2>
+                <button class="modal-close" id="closeHwDetailBtn" aria-label="Close">&times;</button>
+            </div>
+            <div id="hwDetailMeta" class="hw-detail-meta"></div>
+            <div id="hwDetailContent" class="hw-detail-content"></div>
+            <div class="form-actions">
+                <button class="btn-danger" id="deleteHwDetailBtn">Delete</button>
+                <button class="btn-secondary" id="copyHwDetailBtn">Copy</button>
+            </div>
+        </div>
     </div>
 
     <!-- ===== STUDENT MODAL ===== -->

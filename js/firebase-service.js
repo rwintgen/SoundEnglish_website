@@ -166,6 +166,57 @@
                 console.error('Error fetching API key:', error);
                 return null;
             }
+        },
+
+        // Saved Homeworks Collection
+        getAllHomeworks: async () => {
+            try {
+                const snap = await db.collection('homeworks').orderBy('createdAt', 'desc').get();
+                const data = [];
+                snap.forEach(doc => data.push({ id: doc.id, ...doc.data() }));
+                return { success: true, data };
+            } catch (error) {
+                console.error('Error fetching homeworks:', error);
+                return { success: false, error: error.message };
+            }
+        },
+
+        getHomeworksByStudent: async (studentId) => {
+            try {
+                const snap = await db.collection('homeworks')
+                    .where('studentId', '==', studentId)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                const data = [];
+                snap.forEach(doc => data.push({ id: doc.id, ...doc.data() }));
+                return { success: true, data };
+            } catch (error) {
+                console.error('Error fetching student homeworks:', error);
+                return { success: false, error: error.message };
+            }
+        },
+
+        createHomework: async (hwData) => {
+            try {
+                const docRef = await db.collection('homeworks').add({
+                    ...hwData,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                });
+                return { success: true, id: docRef.id };
+            } catch (error) {
+                console.error('Error saving homework:', error);
+                return { success: false, error: error.message };
+            }
+        },
+
+        deleteHomework: async (id) => {
+            try {
+                await db.collection('homeworks').doc(id).delete();
+                return { success: true };
+            } catch (error) {
+                console.error('Error deleting homework:', error);
+                return { success: false, error: error.message };
+            }
         }
     };
 
