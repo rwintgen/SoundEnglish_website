@@ -3,9 +3,7 @@
 
     const LS_MODEL = 'se_model';
     const LS_CHAT  = 'se_chat_state';
-    const API_BASE = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-        ? 'https://generate-cqmoidoxkq-ew.a.run.app'   // direct Cloud Run URL for local dev
-        : '';                                            // relative (hosting rewrite) in prod
+    const API_BASE = 'https://generate-cqmoidoxkq-ew.a.run.app';
     let currentUser   = null;
     let students      = [];       // cached
     let homeworkTypes = [];       // cached template list
