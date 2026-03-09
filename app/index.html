@@ -10,6 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="../js/firebase-service.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
 
@@ -116,53 +117,6 @@
                     <button class="btn-primary" id="newStudentBtn">+ New Student</button>
                 </div>
 
-                <div id="studentForm" class="card form-card" style="display:none;">
-                    <h2 id="studentFormTitle">Add Student</h2>
-                    <input type="hidden" id="studentId">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" id="studentName" placeholder="Full name">
-                        </div>
-                        <div class="form-group">
-                            <label>Native language</label>
-                            <select id="studentNativeLang">
-                                <option value="French">French</option>
-                                <option value="Polish">Polish</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Level</label>
-                            <select id="studentLevel">
-                                <option value="A1">A1 – Beginner</option>
-                                <option value="A2">A2 – Elementary</option>
-                                <option value="B1">B1 – Intermediate</option>
-                                <option value="B2" selected>B2 – Upper Intermediate</option>
-                                <option value="C1">C1 – Advanced</option>
-                                <option value="C2">C2 – Proficiency</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Themes of interest</label>
-                            <input type="text" id="studentThemes" placeholder="e.g. business, travel, sport">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Areas to focus on</label>
-                        <textarea id="studentFocus" rows="2" placeholder="e.g. past tenses, articles, pronunciation…"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Notes</label>
-                        <textarea id="studentNotes" rows="2" placeholder="Any other notes…"></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button class="btn-secondary" id="cancelStudentBtn">Cancel</button>
-                        <button class="btn-primary" id="saveStudentBtn">Save</button>
-                    </div>
-                </div>
-
                 <div id="studentList" class="card-grid"></div>
                 <div id="studentsEmpty" class="empty-state" style="display:none;">
                     <p>No students yet. Click <strong>+ New Student</strong> to add one.</p>
@@ -170,6 +124,63 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- ===== STUDENT MODAL ===== -->
+    <div id="studentModal" class="modal-backdrop" style="display:none;" aria-modal="true" role="dialog">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="studentFormTitle">Add Student</h2>
+                <button class="modal-close" id="cancelStudentBtn" aria-label="Close">&times;</button>
+            </div>
+            <input type="hidden" id="studentId">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0">
+                        <label>Name</label>
+                        <input type="text" id="studentName" placeholder="Full name">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0">
+                        <label>Native language</label>
+                        <select id="studentNativeLang">
+                            <option value="French">French</option>
+                            <option value="Polish">Polish</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0">
+                        <label>Level</label>
+                        <select id="studentLevel">
+                            <option value="A1">A1 – Beginner</option>
+                            <option value="A2">A2 – Elementary</option>
+                            <option value="B1">B1 – Intermediate</option>
+                            <option value="B2" selected>B2 – Upper Intermediate</option>
+                            <option value="C1">C1 – Advanced</option>
+                            <option value="C2">C2 – Proficiency</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0">
+                        <label>Themes of interest</label>
+                        <input type="text" id="studentThemes" placeholder="e.g. business, travel, sport">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Areas to focus on</label>
+                <textarea id="studentFocus" rows="2" placeholder="e.g. past tenses, articles, pronunciation…"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="studentNotes" rows="2" placeholder="Any other notes…"></textarea>
+            </div>
+            <div class="form-actions">
+                <button class="btn-secondary" id="cancelStudentBtnFooter">Cancel</button>
+                <button class="btn-primary" id="saveStudentBtn">Save</button>
+            </div>
+        </div>
     </div>
 
     <!-- ===== HOMEWORK TYPE MODAL ===== -->
@@ -195,6 +206,6 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <!-- app.js loaded as module above -->
 </body>
 </html>

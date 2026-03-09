@@ -3,10 +3,12 @@
 
     const LS_MODEL = 'se_model';
     const LS_CHAT  = 'se_chat_state';
+    const API_BASE = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? 'https://generate-cqmoidoxkq-ew.a.run.app'   // direct Cloud Run URL for local dev
+        : '';                                            // relative (hosting rewrite) in prod
     let currentUser   = null;
     let students      = [];       // cached
     let homeworkTypes = [];       // cached template list
-    let geminiKey     = null;
     let lastOutput    = null;     // last generated text (ephemeral)
 
     // ---- Boot ----
@@ -19,7 +21,6 @@
                 currentUser = user;
                 document.getElementById('userEmail').textContent = user.email;
                 document.getElementById('appShell').style.display = 'flex';
-                geminiKey = await window.FirebaseService.getGeminiApiKey();
                 await loadStudents();
                 await loadHomeworkTypes();
                 await populateModelDropdown();
@@ -103,7 +104,14 @@
     function setupStudents() {
         document.getElementById('newStudentBtn').addEventListener('click', openNewStudent);
         document.getElementById('cancelStudentBtn').addEventListener('click', closeStudentForm);
+        document.getElementById('cancelStudentBtnFooter').addEventListener('click', closeStudentForm);
         document.getElementById('saveStudentBtn').addEventListener('click', saveStudent);
+        document.getElementById('studentModal').addEventListener('click', e => {
+            if (e.target === document.getElementById('studentModal')) closeStudentForm();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && document.getElementById('studentModal').style.display !== 'none') closeStudentForm();
+        });
     }
 
     function openNewStudent() {
@@ -115,12 +123,12 @@
         document.getElementById('studentThemes').value = '';
         document.getElementById('studentFocus').value = '';
         document.getElementById('studentNotes').value = '';
-        document.getElementById('studentForm').style.display = 'block';
+        document.getElementById('studentModal').style.display = 'flex';
         document.getElementById('studentName').focus();
     }
 
     function openEditStudent(s) {
-        document.getElementById('studentFormTitle').textContent = 'Edit Student';
+        document.getElementById('studentFormTitle').textContent = 'Edit — ' + s.name;
         document.getElementById('studentId').value = s.id;
         document.getElementById('studentName').value = s.name || '';
         document.getElementById('studentNativeLang').value = s.nativeLang || 'French';
@@ -128,12 +136,12 @@
         document.getElementById('studentThemes').value = s.themes || '';
         document.getElementById('studentFocus').value = s.focus || '';
         document.getElementById('studentNotes').value = s.notes || '';
-        document.getElementById('studentForm').style.display = 'block';
+        document.getElementById('studentModal').style.display = 'flex';
         document.getElementById('studentName').focus();
     }
 
     function closeStudentForm() {
-        document.getElementById('studentForm').style.display = 'none';
+        document.getElementById('studentModal').style.display = 'none';
     }
 
     async function saveStudent() {
@@ -204,6 +212,7 @@ Answer key:
 1. deadline  2. negotiate  3. stakeholder  ...
 
 ## OTHER INSTRUCTIONS
+- The output must be plain text only. Do not use any markdown formatting: no asterisks, no bold, no italics, no hash headings, no bullet symbols.
 - Adapt sentence complexity and vocabulary to the student's level.
 - Target completion time: 15-20 minutes.`
         },
@@ -240,6 +249,7 @@ Answer key:
 ...
 
 ## OTHER INSTRUCTIONS
+- The output must be plain text only. Do not use any markdown formatting: no asterisks, no bold, no italics, no hash headings, no bullet symbols.
 - Adapt the difficulty of errors to the student's level.
 - Target completion time: 15-20 minutes.`
         },
@@ -274,6 +284,7 @@ Column A                 Column B
 Answer key: 1-B  2-C  3-A  ...
 
 ## OTHER INSTRUCTIONS
+- The output must be plain text only. Do not use any markdown formatting: no asterisks, no bold, no italics, no hash headings, no bullet symbols.
 - Adapt vocabulary selection and definition complexity to the student's level.
 - Target completion time: 10-15 minutes.`
         },
@@ -312,6 +323,7 @@ Model translation:
 ...
 
 ## OTHER INSTRUCTIONS
+- The output must be plain text only. Do not use any markdown formatting: no asterisks, no bold, no italics, no hash headings, no bullet symbols.
 - Adapt sentence complexity to the student's level.
 - For the model translation, use natural, idiomatic [native language] rather than a word-for-word rendering.
 - Target completion time: 20-25 minutes.`
@@ -450,68 +462,26 @@ Model translation:
         else alert('Error: ' + result.error);
     }
 
-    // ---- Model dropdown — populated live from the API ----
-    // Pretty label mapping: longest matching prefix wins
-    const MODEL_LABELS = [
-        { prefix: 'gemini-2.5-pro',        label: 'Gemini 2.5 Pro'       },
-        { prefix: 'gemini-2.5-flash',       label: 'Gemini 2.5 Flash'     },
-        { prefix: 'gemini-2.0-flash-lite',  label: 'Gemini 2.0 Flash Lite'},
-        { prefix: 'gemini-2.0-flash',       label: 'Gemini 2.0 Flash'     },
-        { prefix: 'gemini-1.5-pro',         label: 'Gemini 1.5 Pro'       },
-        { prefix: 'gemini-1.5-flash',       label: 'Gemini 1.5 Flash'     },
+    // ---- Model dropdown — curated list (calls go through Cloud Function → Vertex AI) ----
+    const AVAILABLE_MODELS = [
+        { id: 'gemini-2.5-pro',   label: 'Gemini 2.5 Pro (Best)' },
+        { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+        { id: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
+        { id: 'gemini-1.5-pro',   label: 'Gemini 1.5 Pro' },
+        { id: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
     ];
-    // Models to hide (too old, embedding-only, or vision-only)
-    const MODEL_BLOCKLIST = /exp|thinking|embedding|vision|it|aqa|tts/i;
-    // Preferred order: newer first
-    const MODEL_ORDER = ['gemini-2.5', 'gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-1.5-flash'];
 
-    async function populateModelDropdown() {
+    function populateModelDropdown() {
         const sel = document.getElementById('modelSelect');
-        if (!geminiKey) return;
-        try {
-            const res  = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}&pageSize=100`);
-            const data = await res.json();
-            const models = (data.models || [])
-                .filter(m =>
-                    Array.isArray(m.supportedGenerationMethods) &&
-                    m.supportedGenerationMethods.includes('generateContent') &&
-                    !MODEL_BLOCKLIST.test(m.name)
-                )
-                .sort((a, b) => {
-                    const rank = id => {
-                        const i = MODEL_ORDER.findIndex(p => id.includes(p));
-                        return i === -1 ? 99 : i;
-                    };
-                    return rank(a.name) - rank(b.name);
-                });
-
-            sel.innerHTML = '';
-            if (models.length === 0) {
-                sel.innerHTML = '<option value="">No models available</option>';
-                return;
-            }
-            models.forEach(m => {
-                const id  = m.name.replace('models/', '');
-                const match = MODEL_LABELS.find(l => id.startsWith(l.prefix));
-                const label = match ? match.label : id;
-                const opt = document.createElement('option');
-                opt.value = id;
-                opt.textContent = label;
-                sel.appendChild(opt);
-            });
-
-            // Restore saved preference if still available, else use first
-            const saved = localStorage.getItem(LS_MODEL);
-            if (saved && [...sel.options].some(o => o.value === saved)) {
-                sel.value = saved;
-            } else {
-                localStorage.removeItem(LS_MODEL);
-            }
-        } catch(e) {
-            // Fallback: keep whatever is in the dropdown
-            console.warn('Could not fetch model list:', e);
-        }
+        sel.innerHTML = '';
+        AVAILABLE_MODELS.forEach(m => {
+            const opt = document.createElement('option');
+            opt.value = m.id;
+            opt.textContent = m.label;
+            sel.appendChild(opt);
+        });
+        const saved = localStorage.getItem(LS_MODEL);
+        if (saved && [...sel.options].some(o => o.value === saved)) { sel.value = saved; }
     }
 
     // ============================================================
@@ -572,11 +542,10 @@ Model translation:
     }
 
     async function generate(retryCount = 0) {
-        if (!geminiKey) { alert('Cannot reach API key. Make sure you are signed in.'); return; }
         const topic = document.getElementById('chatTopic').value.trim();
         if (!topic) { alert('Please describe the lesson topic.'); return; }
 
-        const model     = document.getElementById('modelSelect').value;
+        const modelId   = document.getElementById('modelSelect').value;
         const typeIds   = getSelectedTypeIds();
         if (typeIds.length === 0) { alert('Please select at least one exercise type.'); return; }
         const templates = typeIds.map(id => homeworkTypes.find(t => t.id === id)).filter(Boolean);
@@ -586,71 +555,81 @@ Model translation:
         const btn = document.getElementById('generateBtn');
         btn.disabled = true; btn.textContent = 'Generating…';
         document.getElementById('outputActions').style.display = 'none';
-        document.getElementById('outputContent').innerHTML = '';
+        const outputEl = document.getElementById('outputContent');
+        outputEl.textContent = '';
         document.getElementById('outputLoading').style.display = 'flex';
 
         try {
-            const res = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`,
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: buildPrompt(topic, templates, s) }] }],
-                        generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
-                    })
-                }
-            );
+            const prompt = buildPrompt(topic, templates, s);
+            const token  = await currentUser.getIdToken();
 
-            if (res.status === 429 && retryCount < 3) {
-                // Rate-limited: honour the retry-delay hint from the response
-                let errBody = {};
-                try { errBody = await res.json(); } catch(e) {}
-                const retryMs = parseRetryDelay(errBody) || (1000 * (retryCount + 1));
-                btn.textContent = `Retrying in ${Math.ceil(retryMs / 1000)}s…`;
-                await new Promise(r => setTimeout(r, retryMs));
+            const response = await fetch(API_BASE + '/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
+                },
+                body: JSON.stringify({ prompt, model: modelId }),
+            });
+
+            if (!response.ok) {
+                let msg = 'HTTP ' + response.status;
+                try { const j = await response.json(); msg = j.error || msg; } catch {}
+                throw new Error(msg);
+            }
+
+            // Read streaming SSE response
+            document.getElementById('outputLoading').style.display = 'none';
+            outputEl.textContent = '';
+            let fullText = '';
+            const reader  = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, { stream: true });
+
+                const lines = buffer.split('\n');
+                buffer = lines.pop();           // keep incomplete last line
+
+                for (const line of lines) {
+                    if (!line.startsWith('data: ')) continue;
+                    const data = line.slice(6);
+                    if (data === '[DONE]') continue;
+                    try {
+                        const parsed = JSON.parse(data);
+                        if (parsed.error) throw new Error(parsed.error);
+                        if (parsed.text) {
+                            fullText += parsed.text;
+                            outputEl.textContent = fullText;
+                        }
+                    } catch (parseErr) {
+                        if (parseErr.message !== 'Unexpected end of JSON input') throw parseErr;
+                    }
+                }
+            }
+            showOutput(fullText);
+        } catch (err) {
+            document.getElementById('outputLoading').style.display = 'none';
+            const isQuota = /quota|billing|RESOURCE_EXHAUSTED/i.test(err.message);
+            const isRate  = /429|rate.limit/i.test(err.message);
+
+            if (isRate && retryCount < 3) {
+                const waitMs = 1500 * (retryCount + 1);
+                btn.textContent = `Retrying in ${Math.ceil(waitMs / 1000)}s…`;
+                await new Promise(r => setTimeout(r, waitMs));
                 btn.disabled = false;
                 return generate(retryCount + 1);
             }
 
-            if (!res.ok) {
-                const err = await res.json();
-                throw buildApiError(err, model);
-            }
-            const data = await res.json();
-            const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-            showOutput(text);
-        } catch (err) {
-            showError(err);
+            const e    = new Error(err.message);
+            e.isQuota  = isQuota;
+            showError(e);
         } finally {
-            document.getElementById('outputLoading').style.display = 'none';
             btn.disabled = false; btn.textContent = 'Generate';
         }
-    }
-
-    // Parse the retry-after delay (in ms) from a Google API 429 response body
-    function parseRetryDelay(errBody) {
-        try {
-            const details = errBody?.error?.details || [];
-            for (const d of details) {
-                if (d['@type']?.includes('RetryInfo') && d.retryDelay) {
-                    const s = parseFloat(d.retryDelay);
-                    if (!isNaN(s)) return Math.ceil(s * 1000);
-                }
-            }
-        } catch(e) {}
-        return null;
-    }
-
-    // Build a friendly Error object for API failures
-    function buildApiError(errBody, model) {
-        const raw     = errBody?.error?.message || '';
-        const status  = errBody?.error?.status  || '';
-        const isQuota = /quota|rate.limit|billing/i.test(raw) || status === 'RESOURCE_EXHAUSTED';
-        const err     = new Error(raw);
-        err.isQuota   = isQuota;
-        err.model     = model;
-        return err;
     }
 
     function showOutput(text) {

@@ -154,35 +154,31 @@
             authModal.classList.remove('active');
         }
         
-        // Update button
-        authButton.textContent = 'Sign Out';
-        authButton.classList.add('logout');
-        authButton.id = 'signOutButton';
+        // Update button to "Go to App"
+        authButton.textContent = 'Go to App';
+        authButton.classList.add('go-to-app');
+        authButton.id = 'goToAppButton';
         
         // Remove old listener
-        const oldButton = document.getElementById('authButton');
         const newButton = authButton.cloneNode(true);
         authButton.parentNode.replaceChild(newButton, authButton);
         
-        // Add sign out listener
-        newButton.addEventListener('click', async () => {
-            const result = await window.FirebaseService.signOut();
-            if (result.success) {
-                updateButtonForSignedOut();
-            }
+        // Navigate to app on click
+        newButton.addEventListener('click', () => {
+            window.location.href = '/app/index.html';
         });
     }
 
     function updateButtonForSignedOut() {
-        const signOutBtn = document.getElementById('signOutButton');
-        if (signOutBtn) {
+        const goToAppBtn = document.getElementById('goToAppButton');
+        if (goToAppBtn) {
             const newButton = document.createElement('button');
             newButton.className = 'auth-button';
             newButton.id = 'authButton';
             newButton.textContent = 'Sign In';
-            newButton.classList.remove('logout');
+            newButton.classList.remove('go-to-app');
             
-            signOutBtn.parentNode.replaceChild(newButton, signOutBtn);
+            goToAppBtn.parentNode.replaceChild(newButton, goToAppBtn);
             
             // Re-setup listeners
             const authModal = document.getElementById('authModal');

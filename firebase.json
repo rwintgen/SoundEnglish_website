@@ -1,4 +1,11 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": ["node_modules", ".git"]
+    }
+  ],
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
@@ -10,7 +17,17 @@
       "**/.*",
       "**/node_modules/**",
       "firestore.rules",
-      "firestore.indexes.json"
+      "firestore.indexes.json",
+      "functions"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/generate",
+        "function": {
+          "functionId": "generate",
+          "region": "europe-west1"
+        }
+      }
     ]
   }
 }
