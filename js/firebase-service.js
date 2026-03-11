@@ -217,6 +217,28 @@
                 console.error('Error deleting homework:', error);
                 return { success: false, error: error.message };
             }
+        },
+
+        // Master prompt (settings collection)
+        getMasterPrompt: async () => {
+            try {
+                const doc = await db.collection('settings').doc('master_prompt').get();
+                if (doc.exists) return { success: true, data: doc.data().text };
+                return { success: true, data: null };
+            } catch (error) {
+                console.error('Error fetching master prompt:', error);
+                return { success: false, error: error.message };
+            }
+        },
+
+        saveMasterPrompt: async (text) => {
+            try {
+                await db.collection('settings').doc('master_prompt').set({ text });
+                return { success: true };
+            } catch (error) {
+                console.error('Error saving master prompt:', error);
+                return { success: false, error: error.message };
+            }
         }
     };
 

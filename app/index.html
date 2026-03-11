@@ -105,6 +105,26 @@
                 </div>
                 <p class="section-desc">Each template defines how a type of exercise is generated. Edit the prompt to fine-tune the AI output.</p>
 
+                <!-- Master Prompt -->
+                <div id="masterPromptCard" class="card master-prompt-card">
+                    <div class="master-prompt-header">
+                        <h3>Master Prompt</h3>
+                        <button class="btn-secondary btn-sm" id="editMasterPromptBtn">Edit</button>
+                    </div>
+                    <p class="master-prompt-hint">These instructions are prepended to every generation. They define how the AI handles your lesson notes.</p>
+                    <div id="masterPromptDisplay">
+                        <pre id="masterPromptPreview" class="master-prompt-preview"></pre>
+                    </div>
+                    <div id="masterPromptEdit" style="display:none;">
+                        <textarea id="masterPromptTextarea" rows="12"></textarea>
+                        <div class="form-actions">
+                            <button class="btn-secondary" id="resetMasterPromptBtn">Reset to default</button>
+                            <button class="btn-secondary" id="cancelMasterPromptBtn">Cancel</button>
+                            <button class="btn-primary" id="saveMasterPromptBtn">Save</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="hwTypeList" class="card-grid"></div>
                 <div id="hwTypeEmpty" class="empty-state" style="display:none;">
                     <p>No templates yet. Click <strong>+ New type</strong> to add one.</p>

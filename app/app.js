@@ -10,6 +10,7 @@
     let savedHomeworks = [];      // cached saved homeworks
     let lastOutput    = null;     // last generated text (ephemeral)
     let lastGenerateMeta = null;  // metadata for saving
+    let masterPrompt  = null;     // editable master prompt (loaded from Firestore)
 
     // ---- Boot ----
     const waitForFirebase = setInterval(() => {
@@ -24,11 +25,13 @@
                 await loadStudents();
                 await loadHomeworkTypes();
                 await loadHomeworks();
+                await loadMasterPrompt();
                 await populateModelDropdown();
                 setupNav();
                 setupGenerate();
                 setupHomeworkTypes();
                 setupStudents();
+                setupMasterPrompt();
                 setupHwDetailModal();
                 restoreChatState();
                 document.getElementById('signOutBtn').addEventListener('click', async () => {
@@ -684,9 +687,61 @@ Model translation:
         });
     }
 
+    const DEFAULT_MASTER_PROMPT =
+`You are an experienced English language teacher creating homework exercises.
+
+## LESSON NOTES HANDLING
+- The lesson notes may contain **bold** words or sentences. These are the KEY items the teacher wants to reinforce — give them significantly more weight when building exercises.
+- Vocabulary and structures marked in bold should appear in the majority of exercise items.
+- Non-bold content provides supporting context but should not be the primary focus of exercise items.
+- Do not over-test prepositions or function words (a, the, in, on, at…) unless they were explicitly highlighted in bold or are the stated grammar focus.
+- When the lesson notes contain no bold markers, treat all vocabulary and structures equally.`;
+
+    async function loadMasterPrompt() {
+        const result = await window.FirebaseService.getMasterPrompt();
+        masterPrompt = (result.success && result.data) ? result.data : DEFAULT_MASTER_PROMPT;
+        renderMasterPromptPreview();
+    }
+
+    function renderMasterPromptPreview() {
+        const pre = document.getElementById('masterPromptPreview');
+        if (pre) pre.textContent = masterPrompt;
+    }
+
+    function setupMasterPrompt() {
+        document.getElementById('editMasterPromptBtn').addEventListener('click', () => {
+            document.getElementById('masterPromptTextarea').value = masterPrompt;
+            document.getElementById('masterPromptDisplay').style.display = 'none';
+            document.getElementById('masterPromptEdit').style.display = 'block';
+        });
+        document.getElementById('cancelMasterPromptBtn').addEventListener('click', () => {
+            document.getElementById('masterPromptEdit').style.display = 'none';
+            document.getElementById('masterPromptDisplay').style.display = 'block';
+        });
+        document.getElementById('resetMasterPromptBtn').addEventListener('click', () => {
+            document.getElementById('masterPromptTextarea').value = DEFAULT_MASTER_PROMPT;
+        });
+        document.getElementById('saveMasterPromptBtn').addEventListener('click', async () => {
+            const text = document.getElementById('masterPromptTextarea').value.trim();
+            if (!text) { alert('The master prompt cannot be empty.'); return; }
+            const btn = document.getElementById('saveMasterPromptBtn');
+            btn.disabled = true; btn.textContent = 'Saving…';
+            const result = await window.FirebaseService.saveMasterPrompt(text);
+            btn.disabled = false; btn.textContent = 'Save';
+            if (result.success) {
+                masterPrompt = text;
+                renderMasterPromptPreview();
+                document.getElementById('masterPromptEdit').style.display = 'none';
+                document.getElementById('masterPromptDisplay').style.display = 'block';
+            } else {
+                alert('Error: ' + result.error);
+            }
+        });
+    }
+
     function buildPrompt(topic, templates, student) {
         const multi = templates.length > 1;
-        let prompt = `You are an experienced English language teacher creating homework exercise${multi ? 's' : ''}.\n\n`;
+        let prompt = masterPrompt + '\n\n';
 
         if (student) {
             prompt += '## STUDENT PROFILE\n';
